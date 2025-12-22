@@ -1,0 +1,3060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creowa Pvt Ltd - Advanced Digital Marketing Agency</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+      :root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --dark-bg: #0f172a;
+    --dark-secondary: #1e293b;
+    --dark-tertiary: #334155;
+    --light-bg: #ffffff;
+    --light-secondary: #f8fafc;
+    --light-tertiary: #f1f5f9;
+    --text-dark: #1e293b;
+    --text-light: #e2e8f0;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg);
+    --bg-secondary: var(--dark-secondary);
+    --bg-tertiary: var(--dark-tertiary);
+    --text-color: var(--text-light);
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg);
+    --bg-secondary: var(--light-secondary);
+    --bg-tertiary: var(--light-tertiary);
+    --text-color: var(--text-dark);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+/* Redesigned Navigation */
+.navbar {
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    transition: var(--transition);
+    padding: 0.8rem 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: white !important; /* Ensures text is white */
+    display: flex;
+    align-items: center;
+    order: 1;
+    flex: 0 0 auto;
+    text-decoration: none; /* Removes underline from link */
+}
+
+.navbar-brand img {
+    height: 40px; /* Adjust logo size as needed */
+    margin-right: 12px;
+    border-radius: 8px; /* Optional: adds rounded corners to logo */
+}
+
+.navbar-brand span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    order: 2;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color) !important;
+}
+
+.nav-link i {
+    margin-right: 0.3rem;
+    font-size: 1rem;
+}
+
+.dropdown-menu {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    color: var(--text-color);
+    transition: var(--transition);
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.dropdown-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+}
+
+/* Theme Switch - Small Version for Navigation */
+.theme-switch-nav {
+    --toggle-size: 16px;
+    --container-width: 3em;
+    --container-height: 1.3em;
+    --container-radius: 6.25em;
+    --container-light-bg: #3D7EAE;
+    --container-night-bg: #1D1F2C;
+    --circle-container-diameter: 1.8em;
+    --sun-moon-diameter: 1.1em;
+    --sun-bg: #ECCA2F;
+    --moon-bg: #C4C9D1;
+    --spot-color: #959DB1;
+    --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+    --stars-color: #fff;
+    --clouds-color: #F3FDFF;
+    --back-clouds-color: #AACADF;
+    --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.theme-switch-nav, .theme-switch-nav *, .theme-switch-nav *::before, .theme-switch-nav *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--toggle-size);
+}
+
+.theme-switch-nav__container {
+    width: var(--container-width);
+    height: var(--container-height);
+    background-color: var(--container-light-bg);
+    border-radius: var(--container-radius);
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+    box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+    position: relative;
+}
+
+.theme-switch-nav__container::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+    border-radius: var(--container-radius)
+}
+
+.theme-switch-nav__checkbox {
+    display: none;
+}
+
+.theme-switch-nav__circle-container {
+    width: var(--circle-container-diameter);
+    height: var(--circle-container-diameter);
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    left: var(--circle-container-offset);
+    top: var(--circle-container-offset);
+    border-radius: var(--container-radius);
+    -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: var(--circle-transition);
+    -o-transition: var(--circle-transition);
+    transition: var(--circle-transition);
+    pointer-events: none;
+}
+
+.theme-switch-nav__sun-moon-container {
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+    width: var(--sun-moon-diameter);
+    height: var(--sun-moon-diameter);
+    margin: auto;
+    border-radius: var(--container-radius);
+    background-color: var(--sun-bg);
+    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+    -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+    overflow: hidden;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+}
+
+.theme-switch-nav__moon {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+    width: 100%;
+    height: 100%;
+    background-color: var(--moon-bg);
+    border-radius: inherit;
+    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+    position: relative;
+}
+
+.theme-switch-nav__spot {
+    position: absolute;
+    top: 0.4em;
+    left: 0.16em;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: var(--container-radius);
+    background-color: var(--spot-color);
+    -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+}
+
+.theme-switch-nav__spot:nth-of-type(2) {
+    width: 0.2em;
+    height: 0.2em;
+    top: 0.5em;
+    left: 0.7em;
+}
+
+.theme-switch-nav__spot:nth-last-of-type(3) {
+    width: 0.13em;
+    height: 0.13em;
+    top: 0.16em;
+    left: 0.42em;
+}
+
+.theme-switch-nav__clouds {
+    width: 0.66em;
+    height: 0.66em;
+    background-color: var(--clouds-color);
+    border-radius: var(--container-radius);
+    position: absolute;
+    bottom: -0.33em;
+    left: 0.16em;
+    -webkit-box-shadow: 0.5em 0.16em var(--clouds-color), -0.16em -0.16em var(--back-clouds-color), 0.76em 0.2em var(--clouds-color), 0.26em -0.066em var(--back-clouds-color), 1.16em 0 var(--clouds-color), 0.66em -0.032em var(--back-clouds-color), 1.55em 0.16em var(--clouds-color), 1.06em -0.16em var(--back-clouds-color), 1.92em -0.032em var(--clouds-color), 1.39em 0em var(--back-clouds-color), 2.38em -0.16em var(--clouds-color), 1.78em -0.23em var(--back-clouds-color), 2.44em -0.92em 0 0.23em var(--clouds-color), 2.12em -0.33em var(--back-clouds-color), 2.18em -1.12em 0 0.23em var(--back-clouds-color);
+    box-shadow: 0.5em 0.16em var(--clouds-color), -0.16em -0.16em var(--back-clouds-color), 0.76em 0.2em var(--clouds-color), 0.26em -0.066em var(--back-clouds-color), 1.16em 0 var(--clouds-color), 0.66em -0.032em var(--back-clouds-color), 1.55em 0.16em var(--clouds-color), 1.06em -0.16em var(--back-clouds-color), 1.92em -0.032em var(--clouds-color), 1.39em 0em var(--back-clouds-color), 2.38em -0.16em var(--clouds-color), 1.78em -0.23em var(--back-clouds-color), 2.44em -0.92em 0 0.23em var(--clouds-color), 2.12em -0.33em var(--back-clouds-color), 2.18em -1.12em 0 0.23em var(--back-clouds-color);
+    -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+}
+
+.theme-switch-nav__stars-container {
+    position: absolute;
+    color: var(--stars-color);
+    top: -100%;
+    left: 0.16em;
+    width: 1.45em;
+    height: auto;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+}
+
+/* actions */
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container {
+    background-color: var(--container-night-bg);
+}
+
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__circle-container {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
+}
+
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__circle-container:hover {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.1em)
+}
+
+.theme-switch-nav__circle-container:hover {
+    left: calc(var(--circle-container-offset) + 0.1em);
+}
+
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__moon {
+    -webkit-transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translate(0);
+}
+
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__clouds {
+    bottom: -2.15em;
+}
+
+.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__stars-container {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* Hero Section - Professional Design with Circle Animation */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0 5rem;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* Circle Rotate Animation */
+.circle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.circle-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--gradient);
+    top: -250px;
+    right: -250px;
+    animation: rotate 30s linear infinite;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--gradient);
+    bottom: -200px;
+    left: -200px;
+    animation: rotate 25s linear infinite reverse;
+}
+
+.circle-3 {
+    width: 300px;
+    height: 300px;
+    background: var(--gradient);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 20s linear infinite;
+}
+
+.circle-4 {
+    width: 200px;
+    height: 200px;
+    background: var(--gradient);
+    top: 20%;
+    left: 10%;
+    animation: rotate 15s linear infinite reverse;
+}
+
+.circle-5 {
+    width: 150px;
+    height: 150px;
+    background: var(--gradient);
+    bottom: 20%;
+    right: 10%;
+    animation: rotate 10s linear infinite;
+}
+
+.circle-6 {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient);
+    top: 30%;
+    right: 30%;
+    animation: rotate 8s linear infinite reverse;
+}
+
+/* Circle Border Animation */
+.circle-border {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid;
+    opacity: 0.2;
+}
+
+.circle-border-1 {
+    width: 600px;
+    height: 600px;
+    border-color: var(--primary-color);
+    top: -300px;
+    right: -300px;
+    animation: rotate 40s linear infinite;
+}
+
+.circle-border-2 {
+    width: 500px;
+    height: 500px;
+    border-color: var(--secondary-color);
+    bottom: -250px;
+    left: -250px;
+    animation: rotate 35s linear infinite reverse;
+}
+
+.circle-border-3 {
+    width: 400px;
+    height: 400px;
+    border-color: var(--accent-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 30s linear infinite;
+}
+
+/* Dotted Circle Animation */
+.dotted-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed;
+    opacity: 0.15;
+}
+
+.dotted-circle-1 {
+    width: 700px;
+    height: 700px;
+    border-color: var(--primary-color);
+    top: -350px;
+    right: -350px;
+    animation: rotate 50s linear infinite reverse;
+}
+
+.dotted-circle-2 {
+    width: 600px;
+    height: 600px;
+    border-color: var(--secondary-color);
+    bottom: -300px;
+    left: -300px;
+    animation: rotate 45s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.hero-badge i {
+    margin-right: 0.5rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-gradient {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+    z-index: -1;
+}
+
+.btn-gradient:hover::before {
+    transform: translateX(0);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Hero Visual Elements */
+.hero-visual {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-card {
+    position: absolute;
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hero-card-1 {
+    top: 10%;
+    right: 10%;
+    width: 200px;
+    animation: float 6s infinite ease-in-out;
+}
+
+.hero-card-2 {
+    bottom: 20%;
+    left: 5%;
+    width: 220px;
+    animation: float 8s infinite ease-in-out;
+    animation-delay: 2s;
+}
+
+.hero-card-3 {
+    top: 50%;
+    right: 25%;
+    width: 180px;
+    animation: float 7s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+.hero-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+    background: var(--gradient);
+}
+
+.hero-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-card p {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+.hero-chart {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    background: var(--gradient);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.service-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.service-link:hover {
+    transform: translateX(5px);
+}
+
+/* Service Detail Page */
+.service-detail {
+    padding: 6rem 0 5rem;
+}
+
+.service-hero {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.service-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.service-hero-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    color: white;
+    background: var(--gradient);
+}
+
+.service-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.service-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.service-features {
+    padding: 5rem 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+    color: white;
+    background: var(--gradient);
+    flex-shrink: 0;
+}
+
+.feature-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-content p {
+    opacity: 0.8;
+}
+
+.service-process {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.process-step {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    background: var(--gradient);
+}
+
+.process-step h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.process-step p {
+    opacity: 0.8;
+}
+
+.service-cta {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.service-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-cta p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 5rem 0;
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin: 0.25rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 300px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-category {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Stats Section */
+.stats {
+    padding: 5rem 0;
+    background: var(--gradient);
+    color: white;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.testimonial-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    margin-bottom: 0.25rem;
+}
+
+.author-info p {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.rating {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+/* Contact Section */
+.contact {
+    padding: 5rem 0;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.form-control,
+.form-select {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-tertiary);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+.contact-info {
+    padding: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    background: var(--gradient);
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-secondary);
+    padding: 3rem 0 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    transform: translateX(5px);
+    display: inline-block;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    opacity: 0.7;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    z-index: 1000;
+    border-top: 1px solid var(--border-color);
+}
+
+.mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.mobile-nav-item.active {
+    color: var(--primary-color);
+}
+
+.mobile-nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.mobile-nav-item span {
+    font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    /* Adjust circle sizes for medium screens */
+    .circle-1 {
+        width: 400px;
+        height: 400px;
+        top: -200px;
+        right: -200px;
+    }
+    
+    .circle-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -150px;
+        left: -150px;
+    }
+    
+    .circle-3 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .circle-border-1 {
+        width: 500px;
+        height: 500px;
+        top: -250px;
+        right: -250px;
+    }
+    
+    .circle-border-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -200px;
+        left: -200px;
+    }
+    
+    .circle-border-3 {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .dotted-circle-1 {
+        width: 600px;
+        height: 600px;
+        top: -300px;
+        right: -300px;
+    }
+    
+    .dotted-circle-2 {
+        width: 500px;
+        height: 500px;
+        bottom: -250px;
+        left: -250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    .hero {
+        padding-top: 7rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-visual {
+        display: none;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* Adjust circle sizes for small screens */
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        top: -150px;
+        right: -150px;
+    }
+    
+    .circle-2 {
+        width: 250px;
+        height: 250px;
+        bottom: -125px;
+        left: -125px;
+    }
+    
+    .circle-3 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .circle-4 {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .circle-5 {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .circle-6 {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .circle-border-1 {
+        width: 400px;
+        height: 400px;
+        top: -200px;
+        right: -200px;
+    }
+    
+    .circle-border-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -150px;
+        left: -150px;
+    }
+    
+    .circle-border-3 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .dotted-circle-1 {
+        width: 500px;
+        height: 500px;
+        top: -250px;
+        right: -250px;
+    }
+    
+    .dotted-circle-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -200px;
+        left: -200px;
+    }
+}
+
+/* Loading Animation */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--bg-tertiary);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Custom Cursor */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.2s, height 0.2s;
+    z-index: 9998;
+    display: none;
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.3s, height 0.3s;
+    z-index: 9997;
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .cursor,
+    .cursor-follower {
+        display: block;
+    }
+}
+
+/* Notification Toast */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.custom-toast {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.custom-toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.toast-success .toast-icon {
+    color: #10b981;
+}
+
+.toast-error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-info .toast-icon {
+    color: var(--primary-color);
+}
+
+/* Page Content - Hidden by default */
+.page-content {
+    display: none;
+}
+
+.page-content.active {
+    display: block;
+}
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Redesigned Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="navbar-container">
+            <!-- Company Name/Logo - Left Side -->
+            <a class="navbar-brand" href="#home" onclick="showPage('home')">
+                <!-- 
+                    IMPORTANT: 
+                    Replace the URL below with your actual company logo PNG file.
+                    The placeholder image is just for demonstration.
+                -->
+                <img src="logo.png" alt="Creowa Logo">
+                <span style="color: white;">Creowa Pvt Ltd</span>
+            </a>
+            
+            <!-- Navigation Buttons - Right Side -->
+            <div class="navbar-nav">
+                <div class="nav-item">
+                    <a class="nav-link" href="#home" onclick="showPage('home')">
+                        <i class="bi bi-house-door"></i>
+                        Home
+                    </a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-grid-3x3-gap"></i>
+                        Services
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('seo')"><i class="bi bi-search"></i> SEO Optimization</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('ppc')"><i class="bi bi-megaphone"></i> PPC Advertising</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('content')"><i class="bi bi-pencil-square"></i> Content Marketing</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('email')"><i class="bi bi-envelope"></i> Email Marketing</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('social')"><i class="bi bi-share"></i> Social Media Marketing</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('analytics')"><i class="bi bi-graph-up"></i> Analytics & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="portfolio.html" target="_blank">
+                        <i class="bi bi-briefcase"></i>
+                        Portfolio
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#testimonials" onclick="showPage('home')">
+                        <i class="bi bi-chat-quote"></i>
+                        Testimonials
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#contact" onclick="showPage('home')">
+                        <i class="bi bi-envelope"></i>
+                        Contact
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <!-- Theme Switch - Small Version for Navigation -->
+                    <label class="theme-switch-nav">
+                        <input type="checkbox" class="theme-switch-nav__checkbox" id="themeToggleNav">
+                        <div class="theme-switch-nav__container">
+                            <div class="theme-switch-nav__clouds"></div>
+                            <div class="theme-switch-nav__stars-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+                                </svg>
+                            </div>
+                            <div class="theme-switch-nav__circle-container">
+                                <div class="theme-switch-nav__sun-moon-container">
+                                    <div class="theme-switch-nav__moon">
+                                        <div class="theme-switch-nav__spot"></div>
+                                        <div class="theme-switch-nav__spot"></div>
+                                        <div class="theme-switch-nav__spot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="container">
+            <div class="mobile-nav-items">
+                <a href="#home" class="mobile-nav-item active" onclick="showPage('home')">
+                    <i class="bi bi-house-fill"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#services" class="mobile-nav-item" onclick="showPage('home')">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Services</span>
+                </a>
+                <a href="portfolio.html" class="mobile-nav-item" target="_blank">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="#testimonials" class="mobile-nav-item" onclick="showPage('home')">
+                    <i class="bi bi-chat-quote-fill"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#contact" class="mobile-nav-item" onclick="showPage('home')">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Section - Professional Design with Circle Animation -->
+        <section class="hero" id="home">
+            <div class="hero-bg">
+                <div class="hero-pattern"></div>
+                <!-- Circle Rotate Animation -->
+                <div class="circle-container">
+                    <!-- Filled Circles -->
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="circle circle-4"></div>
+                    <div class="circle circle-5"></div>
+                    <div class="circle circle-6"></div>
+                    
+                    <!-- Circle Borders -->
+                    <div class="circle-border circle-border-1"></div>
+                    <div class="circle-border circle-border-2"></div>
+                    <div class="circle-border circle-border-3"></div>
+                    
+                    <!-- Dotted Circles -->
+                    <div class="dotted-circle dotted-circle-1"></div>
+                    <div class="dotted-circle dotted-circle-2"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-content" data-aos="fade-up">
+                        <div class="hero-badge">
+                            <i class="bi bi-lightning-fill"></i> Advanced Digital Marketing Solutions
+                        </div>
+                        <h1>Transform Your <span class="gradient-text">Digital Presence</span> With Data-Driven Strategies</h1>
+                        <p>We help businesses grow with cutting-edge digital marketing solutions that drive results and increase ROI. Our team of experts combines creativity with analytics to deliver exceptional outcomes.</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-gradient" id="ctaButton">Get Started Today</button>
+                            <a href="portfolio.html" target="_blank" class="btn btn-outline">View Our Work</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
+                        <div class="hero-card hero-card-1">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h4>Increased ROI</h4>
+                            <p>Average 250% increase in client ROI</p>
+                        </div>
+                        <div class="hero-card hero-card-2">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h4>Expert Team</h4>
+                            <p>15+ years of combined experience</p>
+                        </div>
+                        <div class="hero-card hero-card-3">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <h4>Award Winning</h4>
+                            <p>Recognized industry leader</p>
+                        </div>
+                        <div class="hero-chart">
+                            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(99, 102, 241, 0.1)" stroke-width="20"/>
+                                <circle cx="150" cy="150" r="120" fill="none" stroke="url(#gradient)" stroke-width="20" stroke-linecap="round" stroke-dasharray="754" stroke-dashoffset="188" transform="rotate(-90 150 150)"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#6366f1"/>
+                                        <stop offset="100%" stop-color="#8b5cf6"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Our <span class="gradient-text">Services</span></h2>
+                    <p>We offer a comprehensive range of digital marketing services to help your business thrive online.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <h3>SEO Optimization</h3>
+                            <p>Improve your search engine rankings and drive organic traffic with our advanced SEO strategies.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('seo')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-megaphone"></i>
+                            </div>
+                            <h3>PPC Advertising</h3>
+                            <p>Maximize your ROI with targeted pay-per-click campaigns that reach your ideal customers.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('ppc')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                            <h3>Content Marketing</h3>
+                            <p>Engage your audience with compelling content that builds trust and drives conversions.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('content')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <h3>Email Marketing</h3>
+                            <p>Nurture leads and build customer relationships with personalized email campaigns.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('email')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h3>Social Media Marketing</h3>
+                            <p>Build your brand presence and engage with your audience on popular social platforms.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('social')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h3>Analytics & Reporting</h3>
+                            <p>Make data-driven decisions with comprehensive analytics and detailed performance reports.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('analytics')">Learn More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-6" data-aos="fade-up">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="250">0</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="420">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Years of Experience</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="98">0</div>
+                            <div class="stat-label">Client Satisfaction %</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Client <span class="gradient-text">Testimonials</span></h2>
+                    <p>See what our clients have to say about our services and the results we've delivered.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-card">
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-content">"Creowa Pvt Ltd transformed our online presence completely. Our website traffic increased by 200% within just 3 months of working with them."</p>
+                            <div class="testimonial-author">
+                                <img src="https://picsum.photos/seed/person1/50/50.jpg" alt="Client" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>CEO, TechStart Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-card">
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-content">"The team at Creowa Pvt Ltd is professional, knowledgeable, and delivers exceptional results. They've been instrumental in our growth."</p>
+                            <div class="testimonial-author">
+                                <img src="https://picsum.photos/seed/person2/50/50.jpg" alt="Client" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <p>Marketing Director, RetailPro</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-card">
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-content">"We've tried several digital marketing agencies, but Creowa Pvt Ltd stands out. Their strategic approach and attention to detail are unmatched."</p>
+                            <div class="testimonial-author">
+                                <img src="https://picsum.photos/seed/person3/50/50.jpg" alt="Client" class="author-avatar">
+                                <div class="author-info">
+                                    <h4>Emily Rodriguez</h4>
+                                    <p>Founder, StyleBox</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Get In <span class="gradient-text">Touch</span></h2>
+                    <p>Ready to take your digital marketing to the next level? Contact us today for a free consultation.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Subject" required>
+                                <select class="form-select">
+                                    <option selected>Select a Service</option>
+                                    <option value="1">SEO Optimization</option>
+                                    <option value="2">PPC Advertising</option>
+                                    <option value="3">Content Marketing</option>
+                                    <option value="4">Social Media Marketing</option>
+                                    <option value="5">Email Marketing</option>
+                                    <option value="6">Analytics & Reporting</option>
+                                    <option value="7">Other</option>
+                                </select>
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                <button type="submit" class="btn btn-gradient w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <div>
+                                    <h4>Office Location</h4>
+                                    <p>123 Business Ave, Suite 100<br>New York, NY 10001</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div>
+                                    <h4>Phone Number</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+                                <div>
+                                    <h4>Email Address</h4>
+                                    <p>info@creowa.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-clock-fill"></i>
+                                </div>
+                                <div>
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="footer-logo">Creowa Pvt Ltd</div>
+                        <p>Transforming businesses with advanced digital marketing strategies that drive results and increase ROI.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-4">
+                        <h5>Quick Links</h5>
+                        <ul class="footer-links">
+                            <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                            <li><a href="#services" onclick="showPage('home')">Services</a></li>
+                            <li><a href="portfolio.html" target="_blank">Portfolio</a></li>
+                            <li><a href="#testimonials" onclick="showPage('home')">Testimonials</a></li>
+                            <li><a href="#contact" onclick="showPage('home')">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <h5>Services</h5>
+                        <ul class="footer-links">
+                            <li><a href="#" onclick="showServicePage('seo')">SEO Optimization</a></li>
+                            <li><a href="#" onclick="showServicePage('ppc')">PPC Advertising</a></li>
+                            <li><a href="#" onclick="showServicePage('content')">Content Marketing</a></li>
+                            <li><a href="#" onclick="showServicePage('social')">Social Media Marketing</a></li>
+                            <li><a href="#" onclick="showServicePage('email')">Email Marketing</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <h5>Contact Us</h5>
+                        <p>Ready to elevate your digital presence? Get in touch with our expert team today.</p>
+                        <a href="#contact" class="btn btn-gradient mt-2" onclick="showPage('home')">Contact Us</a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Creowa Pvt Ltd. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Service Detail Pages -->
+    <!-- SEO Service Page -->
+    <div id="seo-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h1>SEO Optimization</h1>
+                        <p>Improve your search engine rankings and drive organic traffic with our advanced SEO strategies. Our team of experts will help you climb the search results and increase your online visibility.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">SEO Services</span></h2>
+                        <p>We offer comprehensive SEO solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-search"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Keyword Research</h3>
+                                    <p>We identify the most valuable keywords for your business to target, ensuring you attract qualified traffic that converts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-file-earmark-code"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>On-Page Optimization</h3>
+                                    <p>We optimize your website's content, meta tags, and HTML structure to improve search engine visibility.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-link-45deg"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Link Building</h3>
+                                    <p>We build high-quality backlinks from authoritative websites to boost your domain authority and rankings.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Performance Tracking</h3>
+                                    <p>We provide detailed reports on your SEO performance, including rankings, traffic, and conversion metrics.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">SEO Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional SEO results.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Audit & Research</h3>
+                                <p>We conduct a comprehensive audit of your website and research your competitors to identify opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Strategy Development</h3>
+                                <p>We create a customized SEO strategy based on your business goals and our research findings.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Implementation & Monitoring</h3>
+                                <p>We implement the SEO strategy and continuously monitor performance to make data-driven adjustments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Boost Your Search Rankings?</h2>
+                        <p>Contact us today for a free SEO consultation and take the first step toward improving your online visibility.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PPC Service Page -->
+    <div id="ppc-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-megaphone"></i>
+                        </div>
+                        <h1>PPC Advertising</h1>
+                        <p>Maximize your ROI with targeted pay-per-click campaigns that reach your ideal customers. Our PPC experts create and manage campaigns that deliver measurable results.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">PPC Services</span></h2>
+                        <p>We offer comprehensive PPC solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-google"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Google Ads Management</h3>
+                                    <p>We create and manage Google Ads campaigns that target your ideal customers with precision.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-facebook"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Social Media Advertising</h3>
+                                    <p>We leverage social media platforms to reach your audience with compelling ad campaigns.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Campaign Optimization</h3>
+                                    <p>We continuously optimize your campaigns to improve performance and maximize ROI.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Performance Reporting</h3>
+                                    <p>We provide detailed reports on your PPC performance, including clicks, conversions, and ROI.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">PPC Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional PPC results.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Research & Planning</h3>
+                                <p>We research your target audience and competitors to develop a comprehensive PPC strategy.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Campaign Setup</h3>
+                                <p>We create compelling ad copy, set up targeting parameters, and configure tracking.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Optimization & Scaling</h3>
+                                <p>We continuously monitor and optimize your campaigns to improve performance and scale successful strategies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Maximize Your Advertising ROI?</h2>
+                        <p>Contact us today for a free PPC consultation and take the first step toward reaching more customers.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Content Marketing Service Page -->
+    <div id="content-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h1>Content Marketing</h1>
+                        <p>Engage your audience with compelling content that builds trust and drives conversions. Our content marketing strategies help you establish authority in your industry.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Content Marketing Services</span></h2>
+                        <p>We offer comprehensive content solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-file-text"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Content Strategy</h3>
+                                    <p>We develop a comprehensive content strategy aligned with your business goals and target audience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-journal-text"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Blog Content</h3>
+                                    <p>We create engaging blog posts that provide value to your audience and improve your search rankings.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Video Content</h3>
+                                    <p>We produce compelling video content that captures attention and drives engagement.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Content Distribution</h3>
+                                    <p>We distribute your content across relevant channels to maximize reach and engagement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Content Marketing Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional content marketing results.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Research & Planning</h3>
+                                <p>We research your audience, competitors, and industry trends to develop a content strategy.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Content Creation</h3>
+                                <p>We create high-quality, engaging content that resonates with your target audience.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Distribution & Analysis</h3>
+                                <p>We distribute your content and analyze performance to optimize future content strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Elevate Your Content Strategy?</h2>
+                        <p>Contact us today for a free content marketing consultation and take the first step toward creating content that converts.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Email Marketing Service Page -->
+    <div id="email-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <h1>Email Marketing</h1>
+                        <p>Nurture leads and build customer relationships with personalized email campaigns. Our email marketing strategies help you stay connected with your audience and drive conversions.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Email Marketing Services</span></h2>
+                        <p>We offer comprehensive email marketing solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-envelope-paper"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Campaign Strategy</h3>
+                                    <p>We develop targeted email campaigns that align with your business goals and resonate with your audience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-palette"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Email Design</h3>
+                                    <p>We create visually appealing email templates that reflect your brand and drive engagement.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>List Management</h3>
+                                    <p>We help you build and segment your email list to deliver personalized content to the right audience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Performance Analysis</h3>
+                                    <p>We track and analyze email performance metrics to optimize future campaigns for better results.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Email Marketing Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional email marketing results.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Strategy & Planning</h3>
+                                <p>We develop a comprehensive email marketing strategy based on your goals and audience insights.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Creation & Testing</h3>
+                                <p>We create compelling email content and test different elements to optimize performance.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Execution & Analysis</h3>
+                                <p>We execute campaigns and analyze results to continuously improve your email marketing strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Enhance Your Email Marketing?</h2>
+                        <p>Contact us today for a free email marketing consultation and take the first step toward building stronger customer relationships.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Social Media Marketing Service Page -->
+    <div id="social-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-share"></i>
+                        </div>
+                        <h1>Social Media Marketing</h1>
+                        <p>Build your brand presence and engage with your audience on popular social platforms. Our social media strategies help you connect with customers and grow your online community.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Social Media Services</span></h2>
+                        <p>We offer comprehensive social media solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-bullseye"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Social Strategy</h3>
+                                    <p>We develop a comprehensive social media strategy aligned with your business goals and target audience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-calendar-check"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Content Planning</h3>
+                                    <p>We create a content calendar with engaging posts that resonate with your audience and drive engagement.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Community Management</h3>
+                                    <p>We manage your social media communities, responding to comments and messages to build relationships.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Social Analytics</h3>
+                                    <p>We track and analyze social media performance to optimize your strategy and demonstrate ROI.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Social Media Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional social media results.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Audit & Strategy</h3>
+                                <p>We audit your current social media presence and develop a strategy to achieve your goals.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Content Creation</h3>
+                                <p>We create engaging content tailored to each platform and your target audience.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Execution & Optimization</h3>
+                                <p>We execute your social media strategy and continuously optimize based on performance data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Grow Your Social Media Presence?</h2>
+                        <p>Contact us today for a free social media consultation and take the first step toward building a stronger online community.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Analytics & Reporting Service Page -->
+    <div id="analytics-service-page" class="page-content">
+        <section class="service-detail">
+            <div class="service-hero">
+                <div class="container">
+                    <div class="service-hero-content" data-aos="fade-up">
+                        <div class="service-hero-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h1>Analytics & Reporting</h1>
+                        <p>Make data-driven decisions with comprehensive analytics and detailed performance reports. Our analytics services help you understand your audience and optimize your marketing efforts.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-features">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Analytics Services</span></h2>
+                        <p>We offer comprehensive analytics solutions tailored to your business needs.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-speedometer2"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Performance Tracking</h3>
+                                    <p>We track key performance indicators across all your marketing channels to measure success.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-bar-chart-line"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Data Visualization</h3>
+                                    <p>We create intuitive dashboards and visualizations that make complex data easy to understand.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-search"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Conversion Analysis</h3>
+                                    <p>We analyze conversion paths to identify opportunities for improvement and optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-lightbulb"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Insights & Recommendations</h3>
+                                    <p>We provide actionable insights and recommendations to improve your marketing performance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-process">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Our <span class="gradient-text">Analytics Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional analytics insights.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <h3>Data Collection</h3>
+                                <p>We collect data from all your marketing channels and consolidate it for comprehensive analysis.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <h3>Analysis & Interpretation</h3>
+                                <p>We analyze the data to identify trends, patterns, and opportunities for improvement.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <h3>Reporting & Optimization</h3>
+                                <p>We create detailed reports and provide recommendations to optimize your marketing strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-cta">
+                <div class="container">
+                    <div data-aos="fade-up">
+                        <h2>Ready to Make Data-Driven Decisions?</h2>
+                        <p>Contact us today for a free analytics consultation and take the first step toward optimizing your marketing efforts.</p>
+                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Theme Toggle - Using the new theme switch
+        const themeToggleNav = document.getElementById('themeToggleNav');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        
+        // Set the checkbox state based on saved theme
+        if (savedTheme === 'light') {
+            themeToggleNav.checked = true;
+        }
+
+        themeToggleNav.addEventListener('change', () => {
+            const newTheme = themeToggleNav.checked ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Page Navigation Functions
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Reinitialize AOS for the new content
+            AOS.refresh();
+        }
+
+        function showServicePage(serviceId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected service page
+            document.getElementById(serviceId + '-service-page').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Reinitialize AOS for the new content
+            AOS.refresh();
+        }
+
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            mobileNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+        let counted = false;
+
+        const startCounting = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            });
+        };
+
+        // Check if stats section is in viewport
+        const statsSection = document.querySelector('.stats');
+        
+        window.addEventListener('scroll', () => {
+            const sectionPos = statsSection.getBoundingClientRect().top;
+            const screenPos = window.innerHeight / 1.3;
+            
+            if (sectionPos < screenPos && !counted) {
+                startCounting();
+                counted = true;
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            cursorFollower.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        // Toast Notification Function
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `custom-toast toast-${type}`;
+            
+            let icon = '';
+            switch(type) {
+                case 'success':
+                    icon = '<i class="bi bi-check-circle-fill toast-icon"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="bi bi-x-circle-fill toast-icon"></i>';
+                    break;
+                default:
+                    icon = '<i class="bi bi-info-circle-fill toast-icon"></i>';
+            }
+            
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            
+            toastContainer.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            showToast('Your message has been sent successfully! We\'ll get back to you soon.', 'success');
+            
+            // Reset form
+            e.target.reset();
+        });
+
+        // CTA Button Click
+        document.getElementById('ctaButton').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
