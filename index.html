@@ -105,7 +105,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 60px; /* Adjust logo size as needed */
+    height: 52px; /* Adjust logo size as needed */
     margin-right: 12px;
     border-radius: 8px; /* Optional: adds rounded corners to logo */
 }
@@ -888,27 +888,181 @@ body {
     font-size: 0.9rem;
 }
 
-/* Stats Section */
+/* Stats Section - Redesigned */
 .stats {
     padding: 5rem 0;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: var(--gradient);
-    color: white;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.stats .container {
+    position: relative;
+    z-index: 1;
 }
 
 .stat-item {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
+    border-radius: 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+    color: white;
+    background: var(--gradient);
+    position: relative;
+}
+
+.stat-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--gradient);
+    opacity: 0.3;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
 }
 
 .stat-number {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.stat-number::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.8s ease;
+}
+
+.stat-item:hover .stat-number::after {
+    width: 100%;
 }
 
 .stat-label {
     font-size: 1.1rem;
     opacity: 0.9;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.stat-progress {
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 3px;
+    transition: width 2s ease;
+}
+
+/* Add decorative elements */
+.stats-decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.stats-decoration-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-color);
+    top: -150px;
+    right: -150px;
+    animation: float 8s infinite ease-in-out;
+}
+
+.stats-decoration-2 {
+    width: 200px;
+    height: 200px;
+    background: var(--secondary-color);
+    bottom: -100px;
+    left: -100px;
+    animation: float 10s infinite ease-in-out;
+    animation-delay: 2s;
 }
 
 /* Testimonials */
@@ -1795,32 +1949,60 @@ footer {
             </div>
         </section>
 
-        <!-- Stats Section -->
+        <!-- Stats Section - Redesigned -->
         <section class="stats">
             <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Our <span class="gradient-text">Achievements</span></h2>
+                    <p>Numbers that reflect our commitment to excellence</p>
+                </div>
                 <div class="row">
                     <div class="col-md-3 col-6" data-aos="fade-up">
                         <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
                             <div class="stat-number" data-count="350">0</div>
                             <div class="stat-label">Brands Created</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 0%;" data-width="87%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-briefcase"></i>
+                            </div>
                             <div class="stat-number" data-count="520">0</div>
                             <div class="stat-label">Projects Delivered</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 0%;" data-width="95%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
                             <div class="stat-number" data-count="20">0</div>
                             <div class="stat-label">Years of Experience</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 0%;" data-width="75%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-emoji-smile"></i>
+                            </div>
                             <div class="stat-number" data-count="99">0</div>
                             <div class="stat-label">Client Satisfaction %</div>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 0%;" data-width="99%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2857,13 +3039,14 @@ footer {
             });
         });
 
-        // Counter Animation
+        // Counter Animation with Progress Bars
         const counters = document.querySelectorAll('.stat-number');
+        const progressBars = document.querySelectorAll('.progress-bar');
         const speed = 200;
         let counted = false;
 
         const startCounting = () => {
-            counters.forEach(counter => {
+            counters.forEach((counter, index) => {
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-count');
                     const count = +counter.innerText;
@@ -2874,6 +3057,12 @@ footer {
                         setTimeout(updateCount, 1);
                     } else {
                         counter.innerText = target;
+                        
+                        // Animate the corresponding progress bar
+                        if (progressBars[index]) {
+                            const width = progressBars[index].getAttribute('data-width');
+                            progressBars[index].style.width = width;
+                        }
                     }
                 };
                 
@@ -2893,6 +3082,16 @@ footer {
                 counted = true;
             }
         });
+
+        // Add decorative elements to stats section
+        const statsSectionElement = document.querySelector('.stats');
+        const decoration1 = document.createElement('div');
+        decoration1.className = 'stats-decoration stats-decoration-1';
+        const decoration2 = document.createElement('div');
+        decoration2.className = 'stats-decoration stats-decoration-2';
+
+        statsSectionElement.appendChild(decoration1);
+        statsSectionElement.appendChild(decoration2);
 
         // Back to Top Button
         const backToTopBtn = document.getElementById('backToTop');
