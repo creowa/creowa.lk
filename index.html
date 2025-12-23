@@ -105,7 +105,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 40px; /* Adjust logo size as needed */
+    height: 60px; /* Adjust logo size as needed */
     margin-right: 12px;
     border-radius: 8px; /* Optional: adds rounded corners to logo */
 }
@@ -179,205 +179,53 @@ body {
     color: var(--primary-color);
 }
 
-/* Theme Switch - Small Version for Navigation */
-.theme-switch-nav {
-    --toggle-size: 16px;
-    --container-width: 3em;
-    --container-height: 1.3em;
-    --container-radius: 6.25em;
-    --container-light-bg: #3D7EAE;
-    --container-night-bg: #1D1F2C;
-    --circle-container-diameter: 1.8em;
-    --sun-moon-diameter: 1.1em;
-    --sun-bg: #ECCA2F;
-    --moon-bg: #C4C9D1;
-    --spot-color: #959DB1;
-    --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
-    --stars-color: #fff;
-    --clouds-color: #F3FDFF;
-    --back-clouds-color: #AACADF;
-    --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
-    --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-    display: inline-block;
-    margin-left: 1rem;
+/* New Theme Toggle Button */
+.toggle {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  line-height: 1;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
-.theme-switch-nav, .theme-switch-nav *, .theme-switch-nav *::before, .theme-switch-nav *::after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: var(--toggle-size);
+.toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
 }
 
-.theme-switch-nav__container {
-    width: var(--container-width);
-    height: var(--container-height);
-    background-color: var(--container-light-bg);
-    border-radius: var(--container-radius);
-    overflow: hidden;
-    cursor: pointer;
-    -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-    box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-    -webkit-transition: var(--transition);
-    -o-transition: var(--transition);
-    transition: var(--transition);
-    position: relative;
+.input {
+  display: none;
 }
 
-.theme-switch-nav__container::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
-    box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
-    border-radius: var(--container-radius)
+.icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transition: transform 500ms;
+  line-height: 0.1;
 }
 
-.theme-switch-nav__checkbox {
-    display: none;
+.icon--moon {
+  transition-delay: 200ms;
+  color: #b4b4b4;
 }
 
-.theme-switch-nav__circle-container {
-    width: var(--circle-container-diameter);
-    height: var(--circle-container-diameter);
-    background-color: rgba(255, 255, 255, 0.1);
-    position: absolute;
-    left: var(--circle-container-offset);
-    top: var(--circle-container-offset);
-    border-radius: var(--container-radius);
-    -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-transition: var(--circle-transition);
-    -o-transition: var(--circle-transition);
-    transition: var(--circle-transition);
-    pointer-events: none;
+.icon--sun {
+  transform: scale(0);
+  color: #ffa500;
 }
 
-.theme-switch-nav__sun-moon-container {
-    pointer-events: auto;
-    position: relative;
-    z-index: 2;
-    width: var(--sun-moon-diameter);
-    height: var(--sun-moon-diameter);
-    margin: auto;
-    border-radius: var(--container-radius);
-    background-color: var(--sun-bg);
-    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-    -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
-    filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
-    overflow: hidden;
-    -webkit-transition: var(--transition);
-    -o-transition: var(--transition);
-    transition: var(--transition);
+#switch:checked + .icon--moon {
+  transform: rotate(360deg) scale(0);
 }
 
-.theme-switch-nav__moon {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
-    width: 100%;
-    height: 100%;
-    background-color: var(--moon-bg);
-    border-radius: inherit;
-    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-    -webkit-transition: var(--transition);
-    -o-transition: var(--transition);
-    transition: var(--transition);
-    position: relative;
-}
-
-.theme-switch-nav__spot {
-    position: absolute;
-    top: 0.4em;
-    left: 0.16em;
-    width: 0.4em;
-    height: 0.4em;
-    border-radius: var(--container-radius);
-    background-color: var(--spot-color);
-    -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-    box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-}
-
-.theme-switch-nav__spot:nth-of-type(2) {
-    width: 0.2em;
-    height: 0.2em;
-    top: 0.5em;
-    left: 0.7em;
-}
-
-.theme-switch-nav__spot:nth-last-of-type(3) {
-    width: 0.13em;
-    height: 0.13em;
-    top: 0.16em;
-    left: 0.42em;
-}
-
-.theme-switch-nav__clouds {
-    width: 0.66em;
-    height: 0.66em;
-    background-color: var(--clouds-color);
-    border-radius: var(--container-radius);
-    position: absolute;
-    bottom: -0.33em;
-    left: 0.16em;
-    -webkit-box-shadow: 0.5em 0.16em var(--clouds-color), -0.16em -0.16em var(--back-clouds-color), 0.76em 0.2em var(--clouds-color), 0.26em -0.066em var(--back-clouds-color), 1.16em 0 var(--clouds-color), 0.66em -0.032em var(--back-clouds-color), 1.55em 0.16em var(--clouds-color), 1.06em -0.16em var(--back-clouds-color), 1.92em -0.032em var(--clouds-color), 1.39em 0em var(--back-clouds-color), 2.38em -0.16em var(--clouds-color), 1.78em -0.23em var(--back-clouds-color), 2.44em -0.92em 0 0.23em var(--clouds-color), 2.12em -0.33em var(--back-clouds-color), 2.18em -1.12em 0 0.23em var(--back-clouds-color);
-    box-shadow: 0.5em 0.16em var(--clouds-color), -0.16em -0.16em var(--back-clouds-color), 0.76em 0.2em var(--clouds-color), 0.26em -0.066em var(--back-clouds-color), 1.16em 0 var(--clouds-color), 0.66em -0.032em var(--back-clouds-color), 1.55em 0.16em var(--clouds-color), 1.06em -0.16em var(--back-clouds-color), 1.92em -0.032em var(--clouds-color), 1.39em 0em var(--back-clouds-color), 2.38em -0.16em var(--clouds-color), 1.78em -0.23em var(--back-clouds-color), 2.44em -0.92em 0 0.23em var(--clouds-color), 2.12em -0.33em var(--back-clouds-color), 2.18em -1.12em 0 0.23em var(--back-clouds-color);
-    -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-    -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-    transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-}
-
-.theme-switch-nav__stars-container {
-    position: absolute;
-    color: var(--stars-color);
-    top: -100%;
-    left: 0.16em;
-    width: 1.45em;
-    height: auto;
-    -webkit-transition: var(--transition);
-    -o-transition: var(--transition);
-    transition: var(--transition);
-}
-
-/* actions */
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container {
-    background-color: var(--container-night-bg);
-}
-
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__circle-container {
-    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
-}
-
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__circle-container:hover {
-    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.1em)
-}
-
-.theme-switch-nav__circle-container:hover {
-    left: calc(var(--circle-container-offset) + 0.1em);
-}
-
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__moon {
-    -webkit-transform: translate(0);
-    -ms-transform: translate(0);
-    transform: translate(0);
-}
-
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__clouds {
-    bottom: -2.15em;
-}
-
-.theme-switch-nav__checkbox:checked + .theme-switch-nav__container .theme-switch-nav__stars-container {
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+#switch:checked ~ .icon--sun {
+  transition-delay: 200ms;
+  transform: scale(1) rotate(360deg);
 }
 
 /* Hero Section - Professional Design with Circle Animation */
@@ -1262,6 +1110,7 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .mobile-nav-item {
@@ -1273,6 +1122,7 @@ footer {
     transition: var(--transition);
     padding: 0.5rem;
     border-radius: 10px;
+    min-width: 60px;
 }
 
 .mobile-nav-item.active {
@@ -1286,6 +1136,23 @@ footer {
 
 .mobile-nav-item span {
     font-size: 0.75rem;
+}
+
+/* Adjust toggle for mobile */
+.mobile-nav-item .toggle {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.25rem;
+}
+
+.mobile-nav-item .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.mobile-nav-item .icon svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* Responsive Design */
@@ -1630,7 +1497,7 @@ footer {
                     The placeholder image is just for demonstration.
                 -->
                 <img src="logo.png" alt="Creowa Logo">
-                <span style="color: white;">Creowa Pvt Ltd</span>
+                
             </a>
             
             <!-- Navigation Buttons - Right Side -->
@@ -1647,12 +1514,12 @@ footer {
                         Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('seo')"><i class="bi bi-search"></i> SEO Optimization</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('ppc')"><i class="bi bi-megaphone"></i> PPC Advertising</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('content')"><i class="bi bi-pencil-square"></i> Content Marketing</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('email')"><i class="bi bi-envelope"></i> Email Marketing</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('social')"><i class="bi bi-share"></i> Social Media Marketing</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('analytics')"><i class="bi bi-graph-up"></i> Analytics & Reporting</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('branding')"><i class="bi bi-palette"></i> Branding and Identity</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('paidmedia')"><i class="bi bi-bullseye"></i> Paid Media & Inbound</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('creative')"><i class="bi bi-brush"></i> Creative Design & Video</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('webdesign')"><i class="bi bi-laptop"></i> Web Design & Development</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('fullstack')"><i class="bi bi-code-slash"></i> Full Stack Development</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showServicePage('photography')"><i class="bi bi-camera"></i> Photography & Video</a></li>
                     </ul>
                 </div>
                 <div class="nav-item">
@@ -1674,27 +1541,41 @@ footer {
                     </a>
                 </div>
                 <div class="nav-item">
-                    <!-- Theme Switch - Small Version for Navigation -->
-                    <label class="theme-switch-nav">
-                        <input type="checkbox" class="theme-switch-nav__checkbox" id="themeToggleNav">
-                        <div class="theme-switch-nav__container">
-                            <div class="theme-switch-nav__clouds"></div>
-                            <div class="theme-switch-nav__stars-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
-                                </svg>
-                            </div>
-                            <div class="theme-switch-nav__circle-container">
-                                <div class="theme-switch-nav__sun-moon-container">
-                                    <div class="theme-switch-nav__moon">
-                                        <div class="theme-switch-nav__spot"></div>
-                                        <div class="theme-switch-nav__spot"></div>
-                                        <div class="theme-switch-nav__spot"></div>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- New Theme Toggle Button -->
+                    <div class="container">
+                      <label for="switch" class="toggle">
+                        <input type="checkbox" class="input" id="switch" />
+                        <div class="icon icon--moon">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            width="32"
+                            height="32"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
                         </div>
-                    </label>
+
+                        <div class="icon icon--sun">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            width="32"
+                            height="32"
+                          >
+                            <path
+                              d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1724,6 +1605,42 @@ footer {
                     <i class="bi bi-envelope-fill"></i>
                     <span>Contact</span>
                 </a>
+                <!-- Theme Toggle for Mobile -->
+                <div class="mobile-nav-item">
+                    <label for="mobile-switch" class="toggle">
+                        <input type="checkbox" class="input" id="mobile-switch" />
+                        <div class="icon icon--moon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                width="20"
+                                height="20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+
+                        <div class="icon icon--sun">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                width="20"
+                                height="20"
+                            >
+                                <path
+                                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
+                                ></path>
+                            </svg>
+                        </div>
+                    </label>
+                    <span>Theme</span>
+                </div>
             </div>
         </div>
     </div>
@@ -1758,10 +1675,10 @@ footer {
                 <div class="row align-items-center">
                     <div class="col-lg-6 hero-content" data-aos="fade-up">
                         <div class="hero-badge">
-                            <i class="bi bi-lightning-fill"></i> Advanced Digital Marketing Solutions
+                            <i class="bi bi-lightning-fill"></i> Creative Digital Solutions
                         </div>
-                        <h1>Transform Your <span class="gradient-text">Digital Presence</span> With Data-Driven Strategies</h1>
-                        <p>We help businesses grow with cutting-edge digital marketing solutions that drive results and increase ROI. Our team of experts combines creativity with analytics to deliver exceptional outcomes.</p>
+                        <h1>Transform Your <span class="gradient-text">Brand Identity</span> With Innovative Design & Development</h1>
+                        <p>We help businesses establish powerful brand identities and create exceptional digital experiences. Our comprehensive services combine creativity with technology to deliver outstanding results.</p>
                         <div class="hero-buttons">
                             <button class="btn btn-gradient" id="ctaButton">Get Started Today</button>
                             <a href="portfolio.html" target="_blank" class="btn btn-outline">View Our Work</a>
@@ -1770,24 +1687,24 @@ footer {
                     <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
                         <div class="hero-card hero-card-1">
                             <div class="hero-card-icon">
-                                <i class="bi bi-graph-up-arrow"></i>
+                                <i class="bi bi-palette"></i>
                             </div>
-                            <h4>Increased ROI</h4>
-                            <p>Average 250% increase in client ROI</p>
+                            <h4>Brand Identity</h4>
+                            <p>Creating memorable brand experiences</p>
                         </div>
                         <div class="hero-card hero-card-2">
                             <div class="hero-card-icon">
-                                <i class="bi bi-people-fill"></i>
+                                <i class="bi bi-code-slash"></i>
                             </div>
-                            <h4>Expert Team</h4>
-                            <p>15+ years of combined experience</p>
+                            <h4>Full Stack Dev</h4>
+                            <p>Building robust digital solutions</p>
                         </div>
                         <div class="hero-card hero-card-3">
                             <div class="hero-card-icon">
-                                <i class="bi bi-trophy-fill"></i>
+                                <i class="bi bi-camera"></i>
                             </div>
-                            <h4>Award Winning</h4>
-                            <p>Recognized industry leader</p>
+                            <h4>Visual Content</h4>
+                            <p>Capturing stunning visuals</p>
                         </div>
                         <div class="hero-chart">
                             <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
@@ -1811,67 +1728,67 @@ footer {
             <div class="container">
                 <div class="section-title" data-aos="fade-up">
                     <h2>Our <span class="gradient-text">Services</span></h2>
-                    <p>We offer a comprehensive range of digital marketing services to help your business thrive online.</p>
+                    <p>We offer a comprehensive range of creative and technical services to elevate your brand.</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-search"></i>
+                                <i class="bi bi-palette"></i>
                             </div>
-                            <h3>SEO Optimization</h3>
-                            <p>Improve your search engine rankings and drive organic traffic with our advanced SEO strategies.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('seo')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Branding and Identity Development</h3>
+                            <p>Create a powerful brand identity that resonates with your audience and stands out in market.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('branding')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-megaphone"></i>
+                                <i class="bi bi-bullseye"></i>
                             </div>
-                            <h3>PPC Advertising</h3>
-                            <p>Maximize your ROI with targeted pay-per-click campaigns that reach your ideal customers.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('ppc')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Paid Media & Inbound Campaigns</h3>
+                            <p>Drive targeted traffic and generate leads with strategic paid media and inbound marketing campaigns.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('paidmedia')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-pencil-square"></i>
+                                <i class="bi bi-brush"></i>
                             </div>
-                            <h3>Content Marketing</h3>
-                            <p>Engage your audience with compelling content that builds trust and drives conversions.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('content')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Creative Design, Video & Experience</h3>
+                            <p>Craft compelling visual experiences that engage your audience and tell your brand story effectively.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('creative')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-envelope"></i>
+                                <i class="bi bi-laptop"></i>
                             </div>
-                            <h3>Email Marketing</h3>
-                            <p>Nurture leads and build customer relationships with personalized email campaigns.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('email')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Web Design & Development</h3>
+                            <p>Build stunning, responsive websites that deliver exceptional user experiences and drive conversions.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('webdesign')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-graph-up"></i>
+                                <i class="bi bi-code-slash"></i>
                             </div>
-                            <h3>Social Media Marketing</h3>
-                            <p>Build your brand presence and engage with your audience on popular social platforms.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('social')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Full Stack Development</h3>
+                            <p>Develop comprehensive web applications with cutting-edge technologies and scalable architectures.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('fullstack')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-speedometer2"></i>
+                                <i class="bi bi-camera"></i>
                             </div>
-                            <h3>Analytics & Reporting</h3>
-                            <p>Make data-driven decisions with comprehensive analytics and detailed performance reports.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('analytics')">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <h3>Photography and Video Productions</h3>
+                            <p>Capture stunning visuals and produce professional video content that brings your brand to life.</p>
+                            <a href="#" class="service-link" onclick="showServicePage('photography')">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1884,25 +1801,25 @@ footer {
                 <div class="row">
                     <div class="col-md-3 col-6" data-aos="fade-up">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="250">0</div>
-                            <div class="stat-label">Happy Clients</div>
+                            <div class="stat-number" data-count="350">0</div>
+                            <div class="stat-label">Brands Created</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="420">0</div>
-                            <div class="stat-label">Projects Completed</div>
+                            <div class="stat-number" data-count="520">0</div>
+                            <div class="stat-label">Projects Delivered</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-number" data-count="20">0</div>
                             <div class="stat-label">Years of Experience</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="98">0</div>
+                            <div class="stat-number" data-count="99">0</div>
                             <div class="stat-label">Client Satisfaction %</div>
                         </div>
                     </div>
@@ -1915,7 +1832,7 @@ footer {
             <div class="container">
                 <div class="section-title" data-aos="fade-up">
                     <h2>Client <span class="gradient-text">Testimonials</span></h2>
-                    <p>See what our clients have to say about our services and the results we've delivered.</p>
+                    <p>See what our clients have to say about our creative and technical services.</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
@@ -1927,12 +1844,12 @@ footer {
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="testimonial-content">"Creowa Pvt Ltd transformed our online presence completely. Our website traffic increased by 200% within just 3 months of working with them."</p>
+                            <p class="testimonial-content">"Creowa Pvt Ltd transformed our brand identity completely. Their creative vision and technical expertise exceeded our expectations."</p>
                             <div class="testimonial-author">
                                 <img src="https://picsum.photos/seed/person1/50/50.jpg" alt="Client" class="author-avatar">
                                 <div class="author-info">
-                                    <h4>Sarah Johnson</h4>
-                                    <p>CEO, TechStart Inc.</p>
+                                    <h4>Alex Thompson</h4>
+                                    <p>CEO, InnovateTech</p>
                                 </div>
                             </div>
                         </div>
@@ -1946,12 +1863,12 @@ footer {
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="testimonial-content">"The team at Creowa Pvt Ltd is professional, knowledgeable, and delivers exceptional results. They've been instrumental in our growth."</p>
+                            <p class="testimonial-content">"The full stack development team at Creowa delivered a robust solution that scaled perfectly with our business growth."</p>
                             <div class="testimonial-author">
                                 <img src="https://picsum.photos/seed/person2/50/50.jpg" alt="Client" class="author-avatar">
                                 <div class="author-info">
-                                    <h4>Michael Chen</h4>
-                                    <p>Marketing Director, RetailPro</p>
+                                    <h4>Sarah Martinez</h4>
+                                    <p>CTO, DataFlow Systems</p>
                                 </div>
                             </div>
                         </div>
@@ -1965,12 +1882,12 @@ footer {
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="testimonial-content">"We've tried several digital marketing agencies, but Creowa Pvt Ltd stands out. Their strategic approach and attention to detail are unmatched."</p>
+                            <p class="testimonial-content">"Their photography and video production team captured our brand essence perfectly. The visual content was exceptional."</p>
                             <div class="testimonial-author">
                                 <img src="https://picsum.photos/seed/person3/50/50.jpg" alt="Client" class="author-avatar">
                                 <div class="author-info">
-                                    <h4>Emily Rodriguez</h4>
-                                    <p>Founder, StyleBox</p>
+                                    <h4>Michael Chen</h4>
+                                    <p>Marketing Director, Luxe Brands</p>
                                 </div>
                             </div>
                         </div>
@@ -1984,7 +1901,7 @@ footer {
             <div class="container">
                 <div class="section-title" data-aos="fade-up">
                     <h2>Get In <span class="gradient-text">Touch</span></h2>
-                    <p>Ready to take your digital marketing to the next level? Contact us today for a free consultation.</p>
+                    <p>Ready to transform your brand? Contact us today for a free consultation.</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
@@ -2001,12 +1918,12 @@ footer {
                                 <input type="text" class="form-control" placeholder="Subject" required>
                                 <select class="form-select">
                                     <option selected>Select a Service</option>
-                                    <option value="1">SEO Optimization</option>
-                                    <option value="2">PPC Advertising</option>
-                                    <option value="3">Content Marketing</option>
-                                    <option value="4">Social Media Marketing</option>
-                                    <option value="5">Email Marketing</option>
-                                    <option value="6">Analytics & Reporting</option>
+                                    <option value="1">Branding and Identity Development</option>
+                                    <option value="2">Paid Media & Inbound Campaigns</option>
+                                    <option value="3">Creative Design, Video & Experience</option>
+                                    <option value="4">Web Design & Development</option>
+                                    <option value="5">Full Stack Development</option>
+                                    <option value="6">Photography and Video Productions</option>
                                     <option value="7">Other</option>
                                 </select>
                                 <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
@@ -2064,7 +1981,7 @@ footer {
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <div class="footer-logo">Creowa Pvt Ltd</div>
-                        <p>Transforming businesses with advanced digital marketing strategies that drive results and increase ROI.</p>
+                        <p>Transforming brands with innovative design, development, and creative solutions that drive results.</p>
                         <div class="social-icons">
                             <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                             <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
@@ -2085,16 +2002,16 @@ footer {
                     <div class="col-md-3 mb-4">
                         <h5>Services</h5>
                         <ul class="footer-links">
-                            <li><a href="#" onclick="showServicePage('seo')">SEO Optimization</a></li>
-                            <li><a href="#" onclick="showServicePage('ppc')">PPC Advertising</a></li>
-                            <li><a href="#" onclick="showServicePage('content')">Content Marketing</a></li>
-                            <li><a href="#" onclick="showServicePage('social')">Social Media Marketing</a></li>
-                            <li><a href="#" onclick="showServicePage('email')">Email Marketing</a></li>
+                            <li><a href="#" onclick="showServicePage('branding')">Branding & Identity</a></li>
+                            <li><a href="#" onclick="showServicePage('paidmedia')">Paid Media & Inbound</a></li>
+                            <li><a href="#" onclick="showServicePage('creative')">Creative Design & Video</a></li>
+                            <li><a href="#" onclick="showServicePage('webdesign')">Web Design & Development</a></li>
+                            <li><a href="#" onclick="showServicePage('fullstack')">Full Stack Development</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 mb-4">
                         <h5>Contact Us</h5>
-                        <p>Ready to elevate your digital presence? Get in touch with our expert team today.</p>
+                        <p>Ready to elevate your brand? Get in touch with our expert team today.</p>
                         <a href="#contact" class="btn btn-gradient mt-2" onclick="showPage('home')">Contact Us</a>
                     </div>
                 </div>
@@ -2105,18 +2022,17 @@ footer {
         </footer>
     </div>
 
-    <!-- Service Detail Pages -->
-    <!-- SEO Service Page -->
-    <div id="seo-service-page" class="page-content">
+    <!-- Branding Service Page -->
+    <div id="branding-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-search"></i>
+                            <i class="bi bi-palette"></i>
                         </div>
-                        <h1>SEO Optimization</h1>
-                        <p>Improve your search engine rankings and drive organic traffic with our advanced SEO strategies. Our team of experts will help you climb the search results and increase your online visibility.</p>
+                        <h1>Branding and Identity Development</h1>
+                        <p>Create a powerful brand identity that resonates with your audience and stands out in market. Our comprehensive branding services help you establish a memorable presence.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2125,40 +2041,40 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">SEO Services</span></h2>
-                        <p>We offer comprehensive SEO solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Branding Services</span></h2>
+                        <p>We offer comprehensive branding solutions tailored to your business needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-search"></i>
+                                    <i class="bi bi-lightbulb"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Keyword Research</h3>
-                                    <p>We identify the most valuable keywords for your business to target, ensuring you attract qualified traffic that converts.</p>
+                                    <h3>Brand Strategy</h3>
+                                    <p>Develop a comprehensive brand strategy that aligns with your business goals and resonates with your target audience.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-file-earmark-code"></i>
+                                    <i class="bi bi-brush"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>On-Page Optimization</h3>
-                                    <p>We optimize your website's content, meta tags, and HTML structure to improve search engine visibility.</p>
+                                    <h3>Visual Identity Design</h3>
+                                    <p>Create stunning visual elements including logos, color schemes, typography, and brand guidelines.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-link-45deg"></i>
+                                    <i class="bi bi-megaphone"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Link Building</h3>
-                                    <p>We build high-quality backlinks from authoritative websites to boost your domain authority and rankings.</p>
+                                    <h3>Brand Messaging</h3>
+                                    <p>Craft compelling brand messages and taglines that communicate your unique value proposition.</p>
                                 </div>
                             </div>
                         </div>
@@ -2168,8 +2084,8 @@ footer {
                                     <i class="bi bi-graph-up-arrow"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Performance Tracking</h3>
-                                    <p>We provide detailed reports on your SEO performance, including rankings, traffic, and conversion metrics.</p>
+                                    <h3>Brand Guidelines</h3>
+                                    <p>Develop comprehensive brand guidelines to ensure consistency across all touchpoints and platforms.</p>
                                 </div>
                             </div>
                         </div>
@@ -2180,29 +2096,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">SEO Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional SEO results.</p>
+                        <h2>Our <span class="gradient-text">Branding Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional branding results.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Audit & Research</h3>
-                                <p>We conduct a comprehensive audit of your website and research your competitors to identify opportunities.</p>
+                                <h3>Discovery & Research</h3>
+                                <p>We conduct thorough research to understand your market, competitors, and target audience.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
                                 <h3>Strategy Development</h3>
-                                <p>We create a customized SEO strategy based on your business goals and our research findings.</p>
+                                <p>We develop a comprehensive brand strategy that defines your unique position in market.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Implementation & Monitoring</h3>
-                                <p>We implement the SEO strategy and continuously monitor performance to make data-driven adjustments.</p>
+                                <h3>Design & Implementation</h3>
+                                <p>We create and implement your brand identity across all channels and touchpoints.</p>
                             </div>
                         </div>
                     </div>
@@ -2212,8 +2128,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Boost Your Search Rankings?</h2>
-                        <p>Contact us today for a free SEO consultation and take the first step toward improving your online visibility.</p>
+                        <h2>Ready to Build Your Brand Identity?</h2>
+                        <p>Contact us today for a free branding consultation and take the first step toward creating a memorable brand.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2221,17 +2137,17 @@ footer {
         </section>
     </div>
 
-    <!-- PPC Service Page -->
-    <div id="ppc-service-page" class="page-content">
+    <!-- Paid Media Service Page -->
+    <div id="paidmedia-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-megaphone"></i>
+                            <i class="bi bi-bullseye"></i>
                         </div>
-                        <h1>PPC Advertising</h1>
-                        <p>Maximize your ROI with targeted pay-per-click campaigns that reach your ideal customers. Our PPC experts create and manage campaigns that deliver measurable results.</p>
+                        <h1>Paid Media & Inbound Campaigns</h1>
+                        <p>Drive targeted traffic and generate leads with strategic paid media and inbound marketing campaigns. Our data-driven approach ensures maximum ROI.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2240,8 +2156,8 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">PPC Services</span></h2>
-                        <p>We offer comprehensive PPC solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Paid Media Services</span></h2>
+                        <p>We offer comprehensive paid media solutions tailored to your business needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
@@ -2250,8 +2166,8 @@ footer {
                                     <i class="bi bi-google"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Google Ads Management</h3>
-                                    <p>We create and manage Google Ads campaigns that target your ideal customers with precision.</p>
+                                    <h3>PPC Advertising</h3>
+                                    <p>Create and manage targeted pay-per-click campaigns across Google, Bing, and social media platforms.</p>
                                 </div>
                             </div>
                         </div>
@@ -2261,19 +2177,19 @@ footer {
                                     <i class="bi bi-facebook"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Social Media Advertising</h3>
-                                    <p>We leverage social media platforms to reach your audience with compelling ad campaigns.</p>
+                                    <h3>Social Media Ads</h3>
+                                    <p>Leverage social media advertising to reach your target audience with precision and engagement.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-bar-chart"></i>
+                                    <i class="bi bi-funnel"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Campaign Optimization</h3>
-                                    <p>We continuously optimize your campaigns to improve performance and maximize ROI.</p>
+                                    <h3>Inbound Marketing</h3>
+                                    <p>Attract qualified leads through content marketing, SEO, and strategic inbound campaigns.</p>
                                 </div>
                             </div>
                         </div>
@@ -2283,8 +2199,8 @@ footer {
                                     <i class="bi bi-graph-up"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Performance Reporting</h3>
-                                    <p>We provide detailed reports on your PPC performance, including clicks, conversions, and ROI.</p>
+                                    <h3>Analytics & Optimization</h3>
+                                    <p>Monitor campaign performance and optimize strategies for maximum ROI and conversion rates.</p>
                                 </div>
                             </div>
                         </div>
@@ -2295,29 +2211,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">PPC Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional PPC results.</p>
+                        <h2>Our <span class="gradient-text">Campaign Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional campaign results.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Research & Planning</h3>
-                                <p>We research your target audience and competitors to develop a comprehensive PPC strategy.</p>
+                                <h3>Audience Research</h3>
+                                <p>We analyze your target audience and develop detailed buyer personas for precise targeting.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h3>Campaign Setup</h3>
-                                <p>We create compelling ad copy, set up targeting parameters, and configure tracking.</p>
+                                <h3>Campaign Creation</h3>
+                                <p>We design compelling ad creatives and landing pages optimized for conversions.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Optimization & Scaling</h3>
-                                <p>We continuously monitor and optimize your campaigns to improve performance and scale successful strategies.</p>
+                                <h3>Launch & Optimize</h3>
+                                <p>We launch campaigns and continuously optimize based on performance data and insights.</p>
                             </div>
                         </div>
                     </div>
@@ -2327,8 +2243,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Maximize Your Advertising ROI?</h2>
-                        <p>Contact us today for a free PPC consultation and take the first step toward reaching more customers.</p>
+                        <h2>Ready to Drive Targeted Traffic?</h2>
+                        <p>Contact us today for a free campaign consultation and take the first step toward reaching your ideal customers.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2336,17 +2252,17 @@ footer {
         </section>
     </div>
 
-    <!-- Content Marketing Service Page -->
-    <div id="content-service-page" class="page-content">
+    <!-- Creative Design Service Page -->
+    <div id="creative-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-pencil-square"></i>
+                            <i class="bi bi-brush"></i>
                         </div>
-                        <h1>Content Marketing</h1>
-                        <p>Engage your audience with compelling content that builds trust and drives conversions. Our content marketing strategies help you establish authority in your industry.</p>
+                        <h1>Creative Design, Video & Experience</h1>
+                        <p>Craft compelling visual experiences that engage your audience and tell your brand story effectively. Our creative team brings your vision to life.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2355,51 +2271,51 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Content Marketing Services</span></h2>
-                        <p>We offer comprehensive content solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Creative Services</span></h2>
+                        <p>We offer comprehensive creative solutions tailored to your brand needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-file-text"></i>
+                                    <i class="bi bi-image"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Content Strategy</h3>
-                                    <p>We develop a comprehensive content strategy aligned with your business goals and target audience.</p>
+                                    <h3>Graphic Design</h3>
+                                    <p>Create stunning visual designs including brochures, flyers, social media graphics, and marketing materials.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-journal-text"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Blog Content</h3>
-                                    <p>We create engaging blog posts that provide value to your audience and improve your search rankings.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
                                     <i class="bi bi-play-circle"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Video Content</h3>
-                                    <p>We produce compelling video content that captures attention and drives engagement.</p>
+                                    <h3>Video Production</h3>
+                                    <p>Produce professional video content including commercials, brand stories, and promotional videos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>UX/UI Design</h3>
+                                    <p>Design intuitive user interfaces and experiences that delight users and drive engagement.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <i class="bi bi-magic"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Content Distribution</h3>
-                                    <p>We distribute your content across relevant channels to maximize reach and engagement.</p>
+                                    <h3>Motion Graphics</h3>
+                                    <p>Create captivating motion graphics and animations that bring your brand to life.</p>
                                 </div>
                             </div>
                         </div>
@@ -2410,29 +2326,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Content Marketing Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional content marketing results.</p>
+                        <h2>Our <span class="gradient-text">Creative Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional creative results.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Research & Planning</h3>
-                                <p>We research your audience, competitors, and industry trends to develop a content strategy.</p>
+                                <h3>Concept Development</h3>
+                                <p>We brainstorm and develop creative concepts that align with your brand and objectives.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h3>Content Creation</h3>
-                                <p>We create high-quality, engaging content that resonates with your target audience.</p>
+                                <h3>Design & Production</h3>
+                                <p>We bring concepts to life through professional design and production processes.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Distribution & Analysis</h3>
-                                <p>We distribute your content and analyze performance to optimize future content strategy.</p>
+                                <h3>Refinement & Delivery</h3>
+                                <p>We refine creative work based on feedback and deliver high-quality final assets.</p>
                             </div>
                         </div>
                     </div>
@@ -2442,8 +2358,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Elevate Your Content Strategy?</h2>
-                        <p>Contact us today for a free content marketing consultation and take the first step toward creating content that converts.</p>
+                        <h2>Ready to Create Amazing Visuals?</h2>
+                        <p>Contact us today for a free creative consultation and take the first step toward stunning visual content.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2451,17 +2367,17 @@ footer {
         </section>
     </div>
 
-    <!-- Email Marketing Service Page -->
-    <div id="email-service-page" class="page-content">
+    <!-- Web Design Service Page -->
+    <div id="webdesign-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-envelope"></i>
+                            <i class="bi bi-laptop"></i>
                         </div>
-                        <h1>Email Marketing</h1>
-                        <p>Nurture leads and build customer relationships with personalized email campaigns. Our email marketing strategies help you stay connected with your audience and drive conversions.</p>
+                        <h1>Web Design & Development</h1>
+                        <p>Build stunning, responsive websites that deliver exceptional user experiences and drive conversions. Our web solutions combine aesthetics with functionality.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2470,51 +2386,51 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Email Marketing Services</span></h2>
-                        <p>We offer comprehensive email marketing solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Web Services</span></h2>
+                        <p>We offer comprehensive web design and development solutions tailored to your needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-envelope-paper"></i>
+                                    <i class="bi bi-brush"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Campaign Strategy</h3>
-                                    <p>We develop targeted email campaigns that align with your business goals and resonate with your audience.</p>
+                                    <h3>Responsive Web Design</h3>
+                                    <p>Create beautiful, mobile-friendly websites that provide optimal viewing across all devices.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-palette"></i>
+                                    <i class="bi bi-code-square"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Email Design</h3>
-                                    <p>We create visually appealing email templates that reflect your brand and drive engagement.</p>
+                                    <h3>Frontend Development</h3>
+                                    <p>Build interactive, performant frontend experiences using modern web technologies.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-server"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>List Management</h3>
-                                    <p>We help you build and segment your email list to deliver personalized content to the right audience.</p>
+                                    <h3>Backend Development</h3>
+                                    <p>Develop robust backend systems and APIs that power your web applications.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-graph-up"></i>
+                                    <i class="bi bi-cart"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Performance Analysis</h3>
-                                    <p>We track and analyze email performance metrics to optimize future campaigns for better results.</p>
+                                    <h3>E-commerce Solutions</h3>
+                                    <p>Create powerful online stores with seamless shopping experiences and secure payment processing.</p>
                                 </div>
                             </div>
                         </div>
@@ -2525,29 +2441,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Email Marketing Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional email marketing results.</p>
+                        <h2>Our <span class="gradient-text">Web Development Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional web solutions.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Strategy & Planning</h3>
-                                <p>We develop a comprehensive email marketing strategy based on your goals and audience insights.</p>
+                                <h3>Planning & Design</h3>
+                                <p>We create wireframes, mockups, and technical specifications for your website.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h3>Creation & Testing</h3>
-                                <p>We create compelling email content and test different elements to optimize performance.</p>
+                                <h3>Development</h3>
+                                <p>We build your website using industry best practices and cutting-edge technologies.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Execution & Analysis</h3>
-                                <p>We execute campaigns and analyze results to continuously improve your email marketing strategy.</p>
+                                <h3>Testing & Launch</h3>
+                                <p>We thoroughly test your website and deploy it with ongoing support and maintenance.</p>
                             </div>
                         </div>
                     </div>
@@ -2557,8 +2473,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Enhance Your Email Marketing?</h2>
-                        <p>Contact us today for a free email marketing consultation and take the first step toward building stronger customer relationships.</p>
+                        <h2>Ready to Build Your Website?</h2>
+                        <p>Contact us today for a free web consultation and take the first step toward your perfect website.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2566,17 +2482,17 @@ footer {
         </section>
     </div>
 
-    <!-- Social Media Marketing Service Page -->
-    <div id="social-service-page" class="page-content">
+    <!-- Full Stack Service Page -->
+    <div id="fullstack-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-share"></i>
+                            <i class="bi bi-code-slash"></i>
                         </div>
-                        <h1>Social Media Marketing</h1>
-                        <p>Build your brand presence and engage with your audience on popular social platforms. Our social media strategies help you connect with customers and grow your online community.</p>
+                        <h1>Full Stack Development</h1>
+                        <p>Develop comprehensive web applications with cutting-edge technologies and scalable architectures. Our full stack solutions deliver powerful, end-to-end functionality.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2585,51 +2501,51 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Social Media Services</span></h2>
-                        <p>We offer comprehensive social media solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Full Stack Services</span></h2>
+                        <p>We offer comprehensive full stack development solutions tailored to your business needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-bullseye"></i>
+                                    <i class="bi bi-layers"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Social Strategy</h3>
-                                    <p>We develop a comprehensive social media strategy aligned with your business goals and target audience.</p>
+                                    <h3>Custom Web Applications</h3>
+                                    <p>Build tailored web applications from scratch to meet your specific business requirements.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-calendar-check"></i>
+                                    <i class="bi bi-cloud"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Content Planning</h3>
-                                    <p>We create a content calendar with engaging posts that resonate with your audience and drive engagement.</p>
+                                    <h3>Cloud Solutions</h3>
+                                    <p>Deploy scalable applications on cloud platforms with optimized performance and reliability.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-people-fill"></i>
+                                    <i class="bi bi-database"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Community Management</h3>
-                                    <p>We manage your social media communities, responding to comments and messages to build relationships.</p>
+                                    <h3>Database Architecture</h3>
+                                    <p>Design and implement efficient database solutions for optimal data management and performance.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-graph-up"></i>
+                                    <i class="bi bi-shield-check"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Social Analytics</h3>
-                                    <p>We track and analyze social media performance to optimize your strategy and demonstrate ROI.</p>
+                                    <h3>Security Implementation</h3>
+                                    <p>Implement robust security measures to protect your application and user data.</p>
                                 </div>
                             </div>
                         </div>
@@ -2640,29 +2556,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Social Media Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional social media results.</p>
+                        <h2>Our <span class="gradient-text">Full Stack Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional full stack solutions.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Audit & Strategy</h3>
-                                <p>We audit your current social media presence and develop a strategy to achieve your goals.</p>
+                                <h3>Architecture Planning</h3>
+                                <p>We design scalable architecture and select appropriate technologies for your project.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h3>Content Creation</h3>
-                                <p>We create engaging content tailored to each platform and your target audience.</p>
+                                <h3>Development & Integration</h3>
+                                <p>We develop frontend and backend components and integrate them seamlessly.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Execution & Optimization</h3>
-                                <p>We execute your social media strategy and continuously optimize based on performance data.</p>
+                                <h3>Deployment & Scaling</h3>
+                                <p>We deploy your application and ensure it scales efficiently with your business growth.</p>
                             </div>
                         </div>
                     </div>
@@ -2672,8 +2588,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Grow Your Social Media Presence?</h2>
-                        <p>Contact us today for a free social media consultation and take the first step toward building a stronger online community.</p>
+                        <h2>Ready to Build Your Application?</h2>
+                        <p>Contact us today for a free full stack consultation and take the first step toward your custom solution.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2681,17 +2597,17 @@ footer {
         </section>
     </div>
 
-    <!-- Analytics & Reporting Service Page -->
-    <div id="analytics-service-page" class="page-content">
+    <!-- Photography Service Page -->
+    <div id="photography-service-page" class="page-content">
         <section class="service-detail">
             <div class="service-hero">
                 <div class="container">
                     <div class="service-hero-content" data-aos="fade-up">
                         <div class="service-hero-icon">
-                            <i class="bi bi-graph-up"></i>
+                            <i class="bi bi-camera"></i>
                         </div>
-                        <h1>Analytics & Reporting</h1>
-                        <p>Make data-driven decisions with comprehensive analytics and detailed performance reports. Our analytics services help you understand your audience and optimize your marketing efforts.</p>
+                        <h1>Photography and Video Productions</h1>
+                        <p>Capture stunning visuals and produce professional video content that brings your brand to life. Our visual storytelling creates lasting impressions.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
                     </div>
                 </div>
@@ -2700,51 +2616,51 @@ footer {
             <div class="service-features">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Analytics Services</span></h2>
-                        <p>We offer comprehensive analytics solutions tailored to your business needs.</p>
+                        <h2>Our <span class="gradient-text">Visual Production Services</span></h2>
+                        <p>We offer comprehensive photography and video production solutions.</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-speedometer2"></i>
+                                    <i class="bi bi-camera"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Performance Tracking</h3>
-                                    <p>We track key performance indicators across all your marketing channels to measure success.</p>
+                                    <h3>Commercial Photography</h3>
+                                    <p>Capture professional product, corporate, and lifestyle photography that showcases your brand.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-bar-chart-line"></i>
+                                    <i class="bi bi-film"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Data Visualization</h3>
-                                    <p>We create intuitive dashboards and visualizations that make complex data easy to understand.</p>
+                                    <h3>Video Production</h3>
+                                    <p>Produce high-quality videos including commercials, documentaries, and brand stories.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-search"></i>
+                                    <i class="bi bi-scissors"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Conversion Analysis</h3>
-                                    <p>We analyze conversion paths to identify opportunities for improvement and optimization.</p>
+                                    <h3>Post-Production</h3>
+                                    <p>Professional video editing, color grading, and visual effects to enhance your content.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="bi bi-lightbulb"></i>
+                                    <i class="bi bi-drone"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h3>Insights & Recommendations</h3>
-                                    <p>We provide actionable insights and recommendations to improve your marketing performance.</p>
+                                    <h3>Aerial Photography</h3>
+                                    <p>Capture stunning aerial shots and drone footage for unique perspectives of your brand.</p>
                                 </div>
                             </div>
                         </div>
@@ -2755,29 +2671,29 @@ footer {
             <div class="service-process">
                 <div class="container">
                     <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Analytics Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional analytics insights.</p>
+                        <h2>Our <span class="gradient-text">Production Process</span></h2>
+                        <p>We follow a proven methodology to deliver exceptional visual content.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="process-step">
                                 <div class="step-number">1</div>
-                                <h3>Data Collection</h3>
-                                <p>We collect data from all your marketing channels and consolidate it for comprehensive analysis.</p>
+                                <h3>Pre-Production</h3>
+                                <p>We plan concepts, scout locations, and prepare all necessary equipment and talent.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="process-step">
                                 <div class="step-number">2</div>
-                                <h3>Analysis & Interpretation</h3>
-                                <p>We analyze the data to identify trends, patterns, and opportunities for improvement.</p>
+                                <h3>Production</h3>
+                                <p>We execute the shoot with professional equipment and experienced crew.</p>
                             </div>
                         </div>
                         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                             <div class="process-step">
                                 <div class="step-number">3</div>
-                                <h3>Reporting & Optimization</h3>
-                                <p>We create detailed reports and provide recommendations to optimize your marketing strategy.</p>
+                                <h3>Post-Production</h3>
+                                <p>We edit and enhance content to deliver polished final assets.</p>
                             </div>
                         </div>
                     </div>
@@ -2787,8 +2703,8 @@ footer {
             <div class="service-cta">
                 <div class="container">
                     <div data-aos="fade-up">
-                        <h2>Ready to Make Data-Driven Decisions?</h2>
-                        <p>Contact us today for a free analytics consultation and take the first step toward optimizing your marketing efforts.</p>
+                        <h2>Ready to Capture Your Vision?</h2>
+                        <p>Contact us today for a free visual production consultation and bring your brand to life.</p>
                         <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
                     </div>
                 </div>
@@ -2812,8 +2728,9 @@ footer {
             offset: 100
         });
 
-        // Theme Toggle - Using the new theme switch
-        const themeToggleNav = document.getElementById('themeToggleNav');
+        // Theme Toggle - Using new theme switch
+        const themeToggle = document.getElementById('switch');
+        const mobileThemeToggle = document.getElementById('mobile-switch');
         const body = document.body;
 
         // Check for saved theme preference
@@ -2822,14 +2739,30 @@ footer {
         
         // Set the checkbox state based on saved theme
         if (savedTheme === 'light') {
-            themeToggleNav.checked = true;
+            themeToggle.checked = true;
+            mobileThemeToggle.checked = true;
         }
 
-        themeToggleNav.addEventListener('change', () => {
-            const newTheme = themeToggleNav.checked ? 'light' : 'dark';
+        // Desktop theme toggle
+        themeToggle.addEventListener('change', () => {
+            const newTheme = themeToggle.checked ? 'light' : 'dark';
             
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            // Sync mobile toggle
+            mobileThemeToggle.checked = themeToggle.checked;
+        });
+
+        // Mobile theme toggle
+        mobileThemeToggle.addEventListener('change', () => {
+            const newTheme = mobileThemeToggle.checked ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Sync desktop toggle
+            themeToggle.checked = mobileThemeToggle.checked;
         });
 
         // Page Navigation Functions
@@ -2898,7 +2831,7 @@ footer {
             
             mobileNavItems.forEach(item => {
                 item.classList.remove('active');
-                if (item.getAttribute('href').slice(1) === current) {
+                if (item.getAttribute('href') && item.getAttribute('href').slice(1) === current) {
                     item.classList.add('active');
                 }
             });
