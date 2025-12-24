@@ -225,6 +225,7 @@ body {
     transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
 }
 
+/* Adjusted for 3 items */
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
     transition-duration: 0.18s;
     transform: translate3d(0, -105px, 0);
@@ -232,23 +233,14 @@ body {
 
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
     transition-duration: 0.28s;
-    transform: translate3d(74.25px, -74.25px, 0);
+    transform: translate3d(91px, -52px, 0);
 }
 
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
     transition-duration: 0.38s;
-    transform: translate3d(105px, 0, 0);
+    transform: translate3d(91px, 52px, 0);
 }
 
-.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
-    transition-duration: 0.48s;
-    transform: translate3d(74.25px, 74.25px, 0);
-}
-
-.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
-    transition-duration: 0.58s;
-    transform: translate3d(0, 105px, 0);
-}
 
 .circular-menu__icon {
     background: var(--gradient);
@@ -351,24 +343,17 @@ body {
         font-size: 28px;
     }
     
+    /* Adjusted for 3 items on mobile */
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
         transform: translate3d(0, -80px, 0);
     }
     
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
-        transform: translate3d(56.57px, -56.57px, 0);
+        transform: translate3d(69px, -40px, 0);
     }
     
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
-        transform: translate3d(80px, 0, 0);
-    }
-    
-    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
-        transform: translate3d(56.57px, 56.57px, 0);
-    }
-    
-    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
-        transform: translate3d(0, 80px, 0);
+        transform: translate3d(69px, 40px, 0);
     }
 }
 
@@ -1710,7 +1695,7 @@ footer {
         </div>
     </div>
 
-    <!-- Draggable Circular Menu -->
+    <!-- UPDATED Draggable Circular Menu -->
     <div class="circular-menu-container" id="circularMenuContainer">
         <nav class="circular-menu">
             <input type="checkbox" id="circular-menu" class="circular-menu__button" href="javascript: void 0">
@@ -1719,20 +1704,22 @@ footer {
                 <div class="hamburger hamburger-bar"></div>
                 <div class="hamburger hamburger-bar"></div>
             </label>
+            
+            <!-- Item 1: Theme Toggle -->
             <a class="circular-menu__item" href="#" id="themeToggle" title="Toggle Theme">
                 <i class="bi bi-moon-fill"></i>
             </a>
-            <a class="circular-menu__item" href="#home" title="Home">
-                <i class="bi bi-house-fill"></i>
+            
+            <!-- Item 2: Hotline Call -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL PHONE NUMBER !!! -->
+            <a class="circular-menu__item" href="tel:+15551234567" title="Call Hotline" id="hotlineButton">
+                <i class="bi bi-telephone-fill"></i>
             </a>
-            <a class="circular-menu__item" href="#services" title="Services">
-                <i class="bi bi-grid-fill"></i>
-            </a>
-            <a class="circular-menu__item" href="portfolio.html" target="_blank" title="Portfolio">
-                <i class="bi bi-briefcase-fill"></i>
-            </a>
-            <a class="circular-menu__item" href="#contact" title="Contact">
-                <i class="bi bi-envelope-fill"></i>
+            
+            <!-- Item 3: WhatsApp -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL WHATSAPP NUMBER !!! -->
+            <a class="circular-menu__item" href="https://wa.me/15551234567?text=Hello%20Creowa,%20I'm%20interested%20in%20your%20services." target="_blank" title="Chat on WhatsApp" id="whatsappButton">
+                <i class="bi bi-whatsapp"></i>
             </a>
         </nav>
     </div>
@@ -1771,7 +1758,7 @@ footer {
                     <p>We help businesses establish powerful brand identities and create exceptional digital experiences. Our comprehensive services combine creativity with technology to deliver outstanding results.</p>
                     <div class="hero-buttons">
                         <button class="btn btn-gradient" id="ctaButton">Get Started Today</button>
-                        <a href="portfolio.html" target="_blank" class="btn btn-outline">View Our Work</a>
+                        <a href="about.html" target="_blank" class="btn btn-outline">Who are we ?</a>
                     </div>
                 </div>
                 <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
