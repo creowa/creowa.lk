@@ -6,7 +6,9 @@
     <title>Creowa Pvt Ltd - Advanced Digital Marketing Agency</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
       :root {
     --primary-color: #6366f1;
@@ -179,53 +181,271 @@ body {
     color: var(--primary-color);
 }
 
-/* New Theme Toggle Button */
-.toggle {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  line-height: 1;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
+/* Circular Menu Styles */
+.circular-menu-container {
+    position: fixed;
+    z-index: 1001;
+    user-select: none;
 }
 
-.toggle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+.circular-menu {
+    font-size: 20px;
+    width: 400px;
+    height: 250px;
+    margin-left: -200px;
+    margin-top: 5rem;
+    padding-left: 200px;
+    padding-top: 20px;
+    position: relative;
 }
 
-.input {
-  display: none;
+.circular-menu__button {
+    display: none;
 }
 
-.icon {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  transition: transform 500ms;
-  line-height: 0.1;
+.circular-menu__button:checked + .circular-menu__icon {
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
 }
 
-.icon--moon {
-  transition-delay: 200ms;
-  color: #b4b4b4;
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(1) {
+    transform: translate3d(0, 0, 0) rotate(45deg);
 }
 
-.icon--sun {
-  transform: scale(0);
-  color: #ffa500;
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0) scale(0.1, 1);
 }
 
-#switch:checked + .icon--moon {
-  transform: rotate(360deg) scale(0);
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 
-#switch:checked ~ .icon--sun {
-  transition-delay: 200ms;
-  transform: scale(1) rotate(360deg);
+.circular-menu__button:checked ~ .circular-menu__item {
+    transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+    transition-duration: 0.18s;
+    transform: translate3d(0, -105px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+    transition-duration: 0.28s;
+    transform: translate3d(74.25px, -74.25px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+    transition-duration: 0.38s;
+    transform: translate3d(105px, 0, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
+    transition-duration: 0.48s;
+    transform: translate3d(74.25px, 74.25px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
+    transition-duration: 0.58s;
+    transform: translate3d(0, 105px, 0);
+}
+
+.circular-menu__icon {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transition: transform ease-out 0.4s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.circular-menu__icon:hover {
+    transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+}
+
+.hamburger-bar {
+    background: #fff;
+    display: block;
+    width: 25px;
+    height: 3px;
+    left: 50%;
+    margin-left: -12.5px;
+    margin-top: -1.5px;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.2s;
+}
+
+.hamburger-bar:nth-child(1) {
+    transform: translate3d(0, -8px, 0);
+}
+
+.hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0);
+}
+
+.hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 8px, 0);
+}
+
+.circular-menu__item {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 0.18s;
+    width: 50px;
+    font-size: 24px;
+}
+
+.circular-menu__item:hover {
+    color: var(--primary-color);
+    background: var(--bg-tertiary);
+}
+
+.circular-menu__item:active,
+.circular-menu__item:focus {
+    color: var(--accent-color);
+}
+
+/* Mobile Circular Menu */
+@media (max-width: 768px) {
+    .circular-menu {
+        width: 300px;
+        height: 200px;
+        margin-left: -150px;
+        margin-top: 5rem;
+        padding-left: 150px;
+        padding-top: 20px;
+    }
+    
+    .circular-menu__icon {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+    }
+    
+    .circular-menu__item {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+        font-size: 28px;
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+        transform: translate3d(0, -80px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+        transform: translate3d(56.57px, -56.57px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+        transform: translate3d(80px, 0, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
+        transform: translate3d(56.57px, 56.57px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
+        transform: translate3d(0, 80px, 0);
+    }
+}
+
+/* Draggable Menu Styles */
+.draggable {
+    cursor: move;
+}
+
+.dragging {
+    opacity: 0.8;
+    z-index: 1002;
+}
+
+.position-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: none;
+    z-index: 1003;
+}
+
+.position-indicator.show {
+    display: block;
+}
+
+.position-indicator button {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.position-indicator button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Tab */
+.menu-tab {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: var(--gradient);
+    color: white;
+    padding: 10px 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.menu-tab:hover {
+    padding-left: 10px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-tab.hidden {
+    left: -60px;
 }
 
 /* Hero Section - Professional Design with Circle Animation */
@@ -674,220 +894,6 @@ body {
     transform: translateX(5px);
 }
 
-/* Service Detail Page */
-.service-detail {
-    padding: 6rem 0 5rem;
-}
-
-.service-hero {
-    padding: 5rem 0;
-    background: var(--bg-secondary);
-}
-
-.service-hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.service-hero-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2rem;
-    font-size: 2.5rem;
-    color: white;
-    background: var(--gradient);
-}
-
-.service-hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-}
-
-.service-hero p {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-}
-
-.service-features {
-    padding: 5rem 0;
-}
-
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-}
-
-.feature-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1.5rem;
-    font-size: 1.2rem;
-    color: white;
-    background: var(--gradient);
-    flex-shrink: 0;
-}
-
-.feature-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-}
-
-.feature-content p {
-    opacity: 0.8;
-}
-
-.service-process {
-    padding: 5rem 0;
-    background: var(--bg-secondary);
-}
-
-.process-step {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.step-number {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    background: var(--gradient);
-}
-
-.process-step h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-}
-
-.process-step p {
-    opacity: 0.8;
-}
-
-.service-cta {
-    padding: 5rem 0;
-    text-align: center;
-}
-
-.service-cta h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.service-cta p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Portfolio Section */
-.portfolio {
-    padding: 5rem 0;
-}
-
-.portfolio-filters {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 2px solid var(--border-color);
-    color: var(--text-color);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    margin: 0.25rem;
-    font-weight: 500;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-    background: var(--gradient);
-    color: white;
-    border-color: transparent;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.portfolio-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    height: 300px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-title {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-category {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-}
-
 /* Stats Section - Redesigned */
 .stats {
     padding: 5rem 0;
@@ -1292,31 +1298,10 @@ footer {
     font-size: 0.75rem;
 }
 
-/* Adjust toggle for mobile */
-.mobile-nav-item .toggle {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0.25rem;
-}
-
-.mobile-nav-item .icon {
-    width: 20px;
-    height: 20px;
-}
-
-.mobile-nav-item .icon svg {
-    width: 20px;
-    height: 20px;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero-content h1 {
         font-size: 2.5rem;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
     
     /* Adjust circle sizes for medium screens */
@@ -1396,10 +1381,6 @@ footer {
     
     .hero-visual {
         display: none;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr;
     }
     
     .stat-number {
@@ -1616,15 +1597,6 @@ footer {
 .toast-info .toast-icon {
     color: var(--primary-color);
 }
-
-/* Page Content - Hidden by default */
-.page-content {
-    display: none;
-}
-
-.page-content.active {
-    display: block;
-}
     </style>
 </head>
 <body data-theme="dark">
@@ -1640,11 +1612,23 @@ footer {
     <!-- Notification Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <!-- Position Indicator for Draggable Menu -->
+    <div class="position-indicator" id="positionIndicator">
+        <span>Menu Position: <span id="positionText">Left Center</span></span>
+        <button id="resetPosition">Reset</button>
+        <button id="savePosition">Save</button>
+    </div>
+
+    <!-- Menu Tab -->
+    <div class="menu-tab" id="menuTab">
+        MENU
+    </div>
+
     <!-- Redesigned Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="navbar-container">
             <!-- Company Name/Logo - Left Side -->
-            <a class="navbar-brand" href="#home" onclick="showPage('home')">
+            <a class="navbar-brand" href="#home">
                 <!-- 
                     IMPORTANT: 
                     Replace the URL below with your actual company logo PNG file.
@@ -1657,7 +1641,7 @@ footer {
             <!-- Navigation Buttons - Right Side -->
             <div class="navbar-nav">
                 <div class="nav-item">
-                    <a class="nav-link" href="#home" onclick="showPage('home')">
+                    <a class="nav-link" href="#home">
                         <i class="bi bi-house-door"></i>
                         Home
                     </a>
@@ -1668,12 +1652,12 @@ footer {
                         Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('branding')"><i class="bi bi-palette"></i> Branding and Identity</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('paidmedia')"><i class="bi bi-bullseye"></i> Paid Media & Inbound</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('creative')"><i class="bi bi-brush"></i> Creative Design & Video</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('webdesign')"><i class="bi bi-laptop"></i> Web Design & Development</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('fullstack')"><i class="bi bi-code-slash"></i> Full Stack Development</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showServicePage('photography')"><i class="bi bi-camera"></i> Photography & Video</a></li>
+                        <li><a class="dropdown-item" href="services/branding.html"><i class="bi bi-palette"></i> Branding and Identity</a></li>
+                        <li><a class="dropdown-item" href="services/paid-media.html"><i class="bi bi-bullseye"></i> Paid Media & Inbound</a></li>
+                        <li><a class="dropdown-item" href="services/creative-design.html"><i class="bi bi-brush"></i> Creative Design & Video</a></li>
+                        <li><a class="dropdown-item" href="services/web-design.html"><i class="bi bi-laptop"></i> Web Design & Development</a></li>
+                        <li><a class="dropdown-item" href="services/full-stack.html"><i class="bi bi-code-slash"></i> Full Stack Development</a></li>
+                        <li><a class="dropdown-item" href="services/photography.html"><i class="bi bi-camera"></i> Photography & Video</a></li>
                     </ul>
                 </div>
                 <div class="nav-item">
@@ -1683,53 +1667,16 @@ footer {
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="#testimonials" onclick="showPage('home')">
+                    <a class="nav-link" href="#testimonials">
                         <i class="bi bi-chat-quote"></i>
                         Testimonials
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="#contact" onclick="showPage('home')">
+                    <a class="nav-link" href="#contact">
                         <i class="bi bi-envelope"></i>
                         Contact
                     </a>
-                </div>
-                <div class="nav-item">
-                    <!-- New Theme Toggle Button -->
-                    <div class="container">
-                      <label for="switch" class="toggle">
-                        <input type="checkbox" class="input" id="switch" />
-                        <div class="icon icon--moon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="32"
-                            height="32"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </div>
-
-                        <div class="icon icon--sun">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="32"
-                            height="32"
-                          >
-                            <path
-                              d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                            ></path>
-                          </svg>
-                        </div>
-                      </label>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1739,11 +1686,11 @@ footer {
     <div class="mobile-nav">
         <div class="container">
             <div class="mobile-nav-items">
-                <a href="#home" class="mobile-nav-item active" onclick="showPage('home')">
+                <a href="#home" class="mobile-nav-item active">
                     <i class="bi bi-house-fill"></i>
                     <span>Home</span>
                 </a>
-                <a href="#services" class="mobile-nav-item" onclick="showPage('home')">
+                <a href="#services" class="mobile-nav-item">
                     <i class="bi bi-grid-fill"></i>
                     <span>Services</span>
                 </a>
@@ -1751,1148 +1698,446 @@ footer {
                     <i class="bi bi-briefcase-fill"></i>
                     <span>Portfolio</span>
                 </a>
-                <a href="#testimonials" class="mobile-nav-item" onclick="showPage('home')">
+                <a href="#testimonials" class="mobile-nav-item">
                     <i class="bi bi-chat-quote-fill"></i>
                     <span>Reviews</span>
                 </a>
-                <a href="#contact" class="mobile-nav-item" onclick="showPage('home')">
+                <a href="#contact" class="mobile-nav-item">
                     <i class="bi bi-envelope-fill"></i>
                     <span>Contact</span>
                 </a>
-                <!-- Theme Toggle for Mobile -->
-                <div class="mobile-nav-item">
-                    <label for="mobile-switch" class="toggle">
-                        <input type="checkbox" class="input" id="mobile-switch" />
-                        <div class="icon icon--moon">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                                    clip-rule="evenodd"
-                                ></path>
-                            </svg>
-                        </div>
-
-                        <div class="icon icon--sun">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                                ></path>
-                            </svg>
-                        </div>
-                    </label>
-                    <span>Theme</span>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Home Page Content -->
-    <div id="home-page" class="page-content active">
-        <!-- Hero Section - Professional Design with Circle Animation -->
-        <section class="hero" id="home">
-            <div class="hero-bg">
-                <div class="hero-pattern"></div>
-                <!-- Circle Rotate Animation -->
-                <div class="circle-container">
-                    <!-- Filled Circles -->
-                    <div class="circle circle-1"></div>
-                    <div class="circle circle-2"></div>
-                    <div class="circle circle-3"></div>
-                    <div class="circle circle-4"></div>
-                    <div class="circle circle-5"></div>
-                    <div class="circle circle-6"></div>
-                    
-                    <!-- Circle Borders -->
-                    <div class="circle-border circle-border-1"></div>
-                    <div class="circle-border circle-border-2"></div>
-                    <div class="circle-border circle-border-3"></div>
-                    
-                    <!-- Dotted Circles -->
-                    <div class="dotted-circle dotted-circle-1"></div>
-                    <div class="dotted-circle dotted-circle-2"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 hero-content" data-aos="fade-up">
-                        <div class="hero-badge">
-                            <i class="bi bi-lightning-fill"></i> Creative Digital Solutions
-                        </div>
-                        <h1>Transform Your <span class="gradient-text">Brand Identity</span> With Innovative Design & Development</h1>
-                        <p>We help businesses establish powerful brand identities and create exceptional digital experiences. Our comprehensive services combine creativity with technology to deliver outstanding results.</p>
-                        <div class="hero-buttons">
-                            <button class="btn btn-gradient" id="ctaButton">Get Started Today</button>
-                            <a href="portfolio.html" target="_blank" class="btn btn-outline">View Our Work</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
-                        <div class="hero-card hero-card-1">
-                            <div class="hero-card-icon">
-                                <i class="bi bi-palette"></i>
-                            </div>
-                            <h4>Brand Identity</h4>
-                            <p>Creating memorable brand experiences</p>
-                        </div>
-                        <div class="hero-card hero-card-2">
-                            <div class="hero-card-icon">
-                                <i class="bi bi-code-slash"></i>
-                            </div>
-                            <h4>Full Stack Dev</h4>
-                            <p>Building robust digital solutions</p>
-                        </div>
-                        <div class="hero-card hero-card-3">
-                            <div class="hero-card-icon">
-                                <i class="bi bi-camera"></i>
-                            </div>
-                            <h4>Visual Content</h4>
-                            <p>Capturing stunning visuals</p>
-                        </div>
-                        <div class="hero-chart">
-                            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(99, 102, 241, 0.1)" stroke-width="20"/>
-                                <circle cx="150" cy="150" r="120" fill="none" stroke="url(#gradient)" stroke-width="20" stroke-linecap="round" stroke-dasharray="754" stroke-dashoffset="188" transform="rotate(-90 150 150)"/>
-                                <defs>
-                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#6366f1"/>
-                                        <stop offset="100%" stop-color="#8b5cf6"/>
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Our <span class="gradient-text">Services</span></h2>
-                    <p>We offer a comprehensive range of creative and technical services to elevate your brand.</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-palette"></i>
-                            </div>
-                            <h3>Branding and Identity Development</h3>
-                            <p>Create a powerful brand identity that resonates with your audience and stands out in market.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('branding')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-bullseye"></i>
-                            </div>
-                            <h3>Paid Media & Inbound Campaigns</h3>
-                            <p>Drive targeted traffic and generate leads with strategic paid media and inbound marketing campaigns.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('paidmedia')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-brush"></i>
-                            </div>
-                            <h3>Creative Design, Video & Experience</h3>
-                            <p>Craft compelling visual experiences that engage your audience and tell your brand story effectively.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('creative')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-laptop"></i>
-                            </div>
-                            <h3>Web Design & Development</h3>
-                            <p>Build stunning, responsive websites that deliver exceptional user experiences and drive conversions.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('webdesign')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-code-slash"></i>
-                            </div>
-                            <h3>Full Stack Development</h3>
-                            <p>Develop comprehensive web applications with cutting-edge technologies and scalable architectures.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('fullstack')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi bi-camera"></i>
-                            </div>
-                            <h3>Photography and Video Productions</h3>
-                            <p>Capture stunning visuals and produce professional video content that brings your brand to life.</p>
-                            <a href="#" class="service-link" onclick="showServicePage('photography')">Learn More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section - Redesigned -->
-        <section class="stats">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Our <span class="gradient-text">Achievements</span></h2>
-                    <p>Numbers that reflect our commitment to excellence</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-6" data-aos="fade-up">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-building"></i>
-                            </div>
-                            <div class="stat-number" data-count="350">0</div>
-                            <div class="stat-label">Brands Created</div>
-                            <div class="stat-progress">
-                                <div class="progress-bar" style="width: 0%;" data-width="87%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-briefcase"></i>
-                            </div>
-                            <div class="stat-number" data-count="520">0</div>
-                            <div class="stat-label">Projects Delivered</div>
-                            <div class="stat-progress">
-                                <div class="progress-bar" style="width: 0%;" data-width="95%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-calendar-check"></i>
-                            </div>
-                            <div class="stat-number" data-count="20">0</div>
-                            <div class="stat-label">Years of Experience</div>
-                            <div class="stat-progress">
-                                <div class="progress-bar" style="width: 0%;" data-width="75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="bi bi-emoji-smile"></i>
-                            </div>
-                            <div class="stat-number" data-count="99">0</div>
-                            <div class="stat-label">Client Satisfaction %</div>
-                            <div class="stat-progress">
-                                <div class="progress-bar" style="width: 0%;" data-width="99%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials" id="testimonials">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Client <span class="gradient-text">Testimonials</span></h2>
-                    <p>See what our clients have to say about our creative and technical services.</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-content">"Creowa Pvt Ltd transformed our brand identity completely. Their creative vision and technical expertise exceeded our expectations."</p>
-                            <div class="testimonial-author">
-                                <img src="https://picsum.photos/seed/person1/50/50.jpg" alt="Client" class="author-avatar">
-                                <div class="author-info">
-                                    <h4>Alex Thompson</h4>
-                                    <p>CEO, InnovateTech</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-content">"The full stack development team at Creowa delivered a robust solution that scaled perfectly with our business growth."</p>
-                            <div class="testimonial-author">
-                                <img src="https://picsum.photos/seed/person2/50/50.jpg" alt="Client" class="author-avatar">
-                                <div class="author-info">
-                                    <h4>Sarah Martinez</h4>
-                                    <p>CTO, DataFlow Systems</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-content">"Their photography and video production team captured our brand essence perfectly. The visual content was exceptional."</p>
-                            <div class="testimonial-author">
-                                <img src="https://picsum.photos/seed/person3/50/50.jpg" alt="Client" class="author-avatar">
-                                <div class="author-info">
-                                    <h4>Michael Chen</h4>
-                                    <p>Marketing Director, Luxe Brands</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact" id="contact">
-            <div class="container">
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Get In <span class="gradient-text">Touch</span></h2>
-                    <p>Ready to transform your brand? Contact us today for a free consultation.</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="contact-form">
-                            <form id="contactForm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" class="form-control" placeholder="Your Email" required>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Subject" required>
-                                <select class="form-select">
-                                    <option selected>Select a Service</option>
-                                    <option value="1">Branding and Identity Development</option>
-                                    <option value="2">Paid Media & Inbound Campaigns</option>
-                                    <option value="3">Creative Design, Video & Experience</option>
-                                    <option value="4">Web Design & Development</option>
-                                    <option value="5">Full Stack Development</option>
-                                    <option value="6">Photography and Video Productions</option>
-                                    <option value="7">Other</option>
-                                </select>
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                                <button type="submit" class="btn btn-gradient w-100">Send Message</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                </div>
-                                <div>
-                                    <h4>Office Location</h4>
-                                    <p>123 Business Ave, Suite 100<br>New York, NY 10001</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-telephone-fill"></i>
-                                </div>
-                                <div>
-                                    <h4>Phone Number</h4>
-                                    <p>+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-envelope-fill"></i>
-                                </div>
-                                <div>
-                                    <h4>Email Address</h4>
-                                    <p>info@creowa.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-clock-fill"></i>
-                                </div>
-                                <div>
-                                    <h4>Business Hours</h4>
-                                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="footer-logo">Creowa Pvt Ltd</div>
-                        <p>Transforming brands with innovative design, development, and creative solutions that drive results.</p>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-4">
-                        <h5>Quick Links</h5>
-                        <ul class="footer-links">
-                            <li><a href="#home" onclick="showPage('home')">Home</a></li>
-                            <li><a href="#services" onclick="showPage('home')">Services</a></li>
-                            <li><a href="portfolio.html" target="_blank">Portfolio</a></li>
-                            <li><a href="#testimonials" onclick="showPage('home')">Testimonials</a></li>
-                            <li><a href="#contact" onclick="showPage('home')">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <h5>Services</h5>
-                        <ul class="footer-links">
-                            <li><a href="#" onclick="showServicePage('branding')">Branding & Identity</a></li>
-                            <li><a href="#" onclick="showServicePage('paidmedia')">Paid Media & Inbound</a></li>
-                            <li><a href="#" onclick="showServicePage('creative')">Creative Design & Video</a></li>
-                            <li><a href="#" onclick="showServicePage('webdesign')">Web Design & Development</a></li>
-                            <li><a href="#" onclick="showServicePage('fullstack')">Full Stack Development</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <h5>Contact Us</h5>
-                        <p>Ready to elevate your brand? Get in touch with our expert team today.</p>
-                        <a href="#contact" class="btn btn-gradient mt-2" onclick="showPage('home')">Contact Us</a>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p>&copy; 2023 Creowa Pvt Ltd. All Rights Reserved.</p>
-                </div>
-            </div>
-        </footer>
+    <!-- Draggable Circular Menu -->
+    <div class="circular-menu-container" id="circularMenuContainer">
+        <nav class="circular-menu">
+            <input type="checkbox" id="circular-menu" class="circular-menu__button" href="javascript: void 0">
+            <label class="circular-menu__icon" for="circular-menu">
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+            </label>
+            <a class="circular-menu__item" href="#" id="themeToggle" title="Toggle Theme">
+                <i class="bi bi-moon-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="#home" title="Home">
+                <i class="bi bi-house-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="#services" title="Services">
+                <i class="bi bi-grid-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="portfolio.html" target="_blank" title="Portfolio">
+                <i class="bi bi-briefcase-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="#contact" title="Contact">
+                <i class="bi bi-envelope-fill"></i>
+            </a>
+        </nav>
     </div>
 
-    <!-- Branding Service Page -->
-    <div id="branding-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
+    <!-- Hero Section - Professional Design with Circle Animation -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+            <!-- Circle Rotate Animation -->
+            <div class="circle-container">
+                <!-- Filled Circles -->
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+                <div class="circle circle-4"></div>
+                <div class="circle circle-5"></div>
+                <div class="circle circle-6"></div>
+                
+                <!-- Circle Borders -->
+                <div class="circle-border circle-border-1"></div>
+                <div class="circle-border circle-border-2"></div>
+                <div class="circle-border circle-border-3"></div>
+                
+                <!-- Dotted Circles -->
+                <div class="dotted-circle dotted-circle-1"></div>
+                <div class="dotted-circle dotted-circle-2"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-up">
+                    <div class="hero-badge">
+                        <i class="bi bi-lightning-fill"></i> Creative Digital Solutions
+                    </div>
+                    <h1>Transform Your <span class="gradient-text">Brand Identity</span> With Innovative Design & Development</h1>
+                    <p>We help businesses establish powerful brand identities and create exceptional digital experiences. Our comprehensive services combine creativity with technology to deliver outstanding results.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-gradient" id="ctaButton">Get Started Today</button>
+                        <a href="portfolio.html" target="_blank" class="btn btn-outline">View Our Work</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
+                    <div class="hero-card hero-card-1">
+                        <div class="hero-card-icon">
                             <i class="bi bi-palette"></i>
                         </div>
-                        <h1>Branding and Identity Development</h1>
-                        <p>Create a powerful brand identity that resonates with your audience and stands out in market. Our comprehensive branding services help you establish a memorable presence.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                        <h4>Brand Identity</h4>
+                        <p>Creating memorable brand experiences</p>
                     </div>
-                </div>
-            </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Branding Services</span></h2>
-                        <p>We offer comprehensive branding solutions tailored to your business needs.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-lightbulb"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Brand Strategy</h3>
-                                    <p>Develop a comprehensive brand strategy that aligns with your business goals and resonates with your target audience.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-brush"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Visual Identity Design</h3>
-                                    <p>Create stunning visual elements including logos, color schemes, typography, and brand guidelines.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-megaphone"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Brand Messaging</h3>
-                                    <p>Craft compelling brand messages and taglines that communicate your unique value proposition.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-graph-up-arrow"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Brand Guidelines</h3>
-                                    <p>Develop comprehensive brand guidelines to ensure consistency across all touchpoints and platforms.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Branding Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional branding results.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Discovery & Research</h3>
-                                <p>We conduct thorough research to understand your market, competitors, and target audience.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Strategy Development</h3>
-                                <p>We develop a comprehensive brand strategy that defines your unique position in market.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Design & Implementation</h3>
-                                <p>We create and implement your brand identity across all channels and touchpoints.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Build Your Brand Identity?</h2>
-                        <p>Contact us today for a free branding consultation and take the first step toward creating a memorable brand.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Paid Media Service Page -->
-    <div id="paidmedia-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
-                            <i class="bi bi-bullseye"></i>
-                        </div>
-                        <h1>Paid Media & Inbound Campaigns</h1>
-                        <p>Drive targeted traffic and generate leads with strategic paid media and inbound marketing campaigns. Our data-driven approach ensures maximum ROI.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Paid Media Services</span></h2>
-                        <p>We offer comprehensive paid media solutions tailored to your business needs.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-google"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>PPC Advertising</h3>
-                                    <p>Create and manage targeted pay-per-click campaigns across Google, Bing, and social media platforms.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-facebook"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Social Media Ads</h3>
-                                    <p>Leverage social media advertising to reach your target audience with precision and engagement.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-funnel"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Inbound Marketing</h3>
-                                    <p>Attract qualified leads through content marketing, SEO, and strategic inbound campaigns.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-graph-up"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Analytics & Optimization</h3>
-                                    <p>Monitor campaign performance and optimize strategies for maximum ROI and conversion rates.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Campaign Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional campaign results.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Audience Research</h3>
-                                <p>We analyze your target audience and develop detailed buyer personas for precise targeting.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Campaign Creation</h3>
-                                <p>We design compelling ad creatives and landing pages optimized for conversions.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Launch & Optimize</h3>
-                                <p>We launch campaigns and continuously optimize based on performance data and insights.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Drive Targeted Traffic?</h2>
-                        <p>Contact us today for a free campaign consultation and take the first step toward reaching your ideal customers.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Creative Design Service Page -->
-    <div id="creative-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
-                            <i class="bi bi-brush"></i>
-                        </div>
-                        <h1>Creative Design, Video & Experience</h1>
-                        <p>Craft compelling visual experiences that engage your audience and tell your brand story effectively. Our creative team brings your vision to life.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Creative Services</span></h2>
-                        <p>We offer comprehensive creative solutions tailored to your brand needs.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-image"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Graphic Design</h3>
-                                    <p>Create stunning visual designs including brochures, flyers, social media graphics, and marketing materials.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-play-circle"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Video Production</h3>
-                                    <p>Produce professional video content including commercials, brand stories, and promotional videos.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-phone"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>UX/UI Design</h3>
-                                    <p>Design intuitive user interfaces and experiences that delight users and drive engagement.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-magic"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Motion Graphics</h3>
-                                    <p>Create captivating motion graphics and animations that bring your brand to life.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Creative Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional creative results.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Concept Development</h3>
-                                <p>We brainstorm and develop creative concepts that align with your brand and objectives.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Design & Production</h3>
-                                <p>We bring concepts to life through professional design and production processes.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Refinement & Delivery</h3>
-                                <p>We refine creative work based on feedback and deliver high-quality final assets.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Create Amazing Visuals?</h2>
-                        <p>Contact us today for a free creative consultation and take the first step toward stunning visual content.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Web Design Service Page -->
-    <div id="webdesign-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
-                            <i class="bi bi-laptop"></i>
-                        </div>
-                        <h1>Web Design & Development</h1>
-                        <p>Build stunning, responsive websites that deliver exceptional user experiences and drive conversions. Our web solutions combine aesthetics with functionality.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Web Services</span></h2>
-                        <p>We offer comprehensive web design and development solutions tailored to your needs.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-brush"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Responsive Web Design</h3>
-                                    <p>Create beautiful, mobile-friendly websites that provide optimal viewing across all devices.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-code-square"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Frontend Development</h3>
-                                    <p>Build interactive, performant frontend experiences using modern web technologies.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-server"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Backend Development</h3>
-                                    <p>Develop robust backend systems and APIs that power your web applications.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-cart"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>E-commerce Solutions</h3>
-                                    <p>Create powerful online stores with seamless shopping experiences and secure payment processing.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Web Development Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional web solutions.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Planning & Design</h3>
-                                <p>We create wireframes, mockups, and technical specifications for your website.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Development</h3>
-                                <p>We build your website using industry best practices and cutting-edge technologies.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Testing & Launch</h3>
-                                <p>We thoroughly test your website and deploy it with ongoing support and maintenance.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Build Your Website?</h2>
-                        <p>Contact us today for a free web consultation and take the first step toward your perfect website.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Full Stack Service Page -->
-    <div id="fullstack-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
+                    <div class="hero-card hero-card-2">
+                        <div class="hero-card-icon">
                             <i class="bi bi-code-slash"></i>
                         </div>
-                        <h1>Full Stack Development</h1>
-                        <p>Develop comprehensive web applications with cutting-edge technologies and scalable architectures. Our full stack solutions deliver powerful, end-to-end functionality.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                        <h4>Full Stack Dev</h4>
+                        <p>Building robust digital solutions</p>
                     </div>
-                </div>
-            </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Full Stack Services</span></h2>
-                        <p>We offer comprehensive full stack development solutions tailored to your business needs.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-layers"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Custom Web Applications</h3>
-                                    <p>Build tailored web applications from scratch to meet your specific business requirements.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-cloud"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Cloud Solutions</h3>
-                                    <p>Deploy scalable applications on cloud platforms with optimized performance and reliability.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-database"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Database Architecture</h3>
-                                    <p>Design and implement efficient database solutions for optimal data management and performance.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-shield-check"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Security Implementation</h3>
-                                    <p>Implement robust security measures to protect your application and user data.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Full Stack Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional full stack solutions.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Architecture Planning</h3>
-                                <p>We design scalable architecture and select appropriate technologies for your project.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Development & Integration</h3>
-                                <p>We develop frontend and backend components and integrate them seamlessly.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Deployment & Scaling</h3>
-                                <p>We deploy your application and ensure it scales efficiently with your business growth.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Build Your Application?</h2>
-                        <p>Contact us today for a free full stack consultation and take the first step toward your custom solution.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Photography Service Page -->
-    <div id="photography-service-page" class="page-content">
-        <section class="service-detail">
-            <div class="service-hero">
-                <div class="container">
-                    <div class="service-hero-content" data-aos="fade-up">
-                        <div class="service-hero-icon">
+                    <div class="hero-card hero-card-3">
+                        <div class="hero-card-icon">
                             <i class="bi bi-camera"></i>
                         </div>
-                        <h1>Photography and Video Productions</h1>
-                        <p>Capture stunning visuals and produce professional video content that brings your brand to life. Our visual storytelling creates lasting impressions.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Back to Home</button>
+                        <h4>Visual Content</h4>
+                        <p>Capturing stunning visuals</p>
+                    </div>
+                    <div class="hero-chart">
+                        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(99, 102, 241, 0.1)" stroke-width="20"/>
+                            <circle cx="150" cy="150" r="120" fill="none" stroke="url(#gradient)" stroke-width="20" stroke-linecap="round" stroke-dasharray="754" stroke-dashoffset="188" transform="rotate(-90 150 150)"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
             </div>
-            
-            <div class="service-features">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Visual Production Services</span></h2>
-                        <p>We offer comprehensive photography and video production solutions.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our <span class="gradient-text">Services</span></h2>
+                <p>We offer a comprehensive range of creative and technical services to elevate your brand.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h3>Branding and Identity Development</h3>
+                        <p>Create a powerful brand identity that resonates with your audience and stands out in market.</p>
+                        <a href="services/branding.html" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-camera"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Commercial Photography</h3>
-                                    <p>Capture professional product, corporate, and lifestyle photography that showcases your brand.</p>
-                                </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h3>Paid Media & Inbound Campaigns</h3>
+                        <p>Drive targeted traffic and generate leads with strategic paid media and inbound marketing campaigns.</p>
+                        <a href="#services" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-brush"></i>
+                        </div>
+                        <h3>Creative Design, Video & Experience</h3>
+                        <p>Craft compelling visual experiences that engage your audience and tell your brand story effectively.</p>
+                        <a href="#services" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3>Web Design & Development</h3>
+                        <p>Build stunning, responsive websites that deliver exceptional user experiences and drive conversions.</p>
+                        <a href="#services" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h3>Full Stack Development</h3>
+                        <p>Develop comprehensive web applications with cutting-edge technologies and scalable architectures.</p>
+                        <a href="#services" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-camera"></i>
+                        </div>
+                        <h3>Photography and Video Productions</h3>
+                        <p>Capture stunning visuals and produce professional video content that brings your brand to life.</p>
+                        <a href="#services" class="service-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section - Redesigned -->
+    <section class="stats">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our <span class="gradient-text">Achievements</span></h2>
+                <p>Numbers that reflect our commitment to excellence</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6" data-aos="fade-up">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <div class="stat-number" data-count="350">0</div>
+                        <div class="stat-label">Brands Created</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar" style="width: 0%;" data-width="87%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <div class="stat-number" data-count="520">0</div>
+                        <div class="stat-label">Projects Delivered</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar" style="width: 0%;" data-width="95%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="stat-number" data-count="20">0</div>
+                        <div class="stat-label">Years of Experience</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar" style="width: 0%;" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="bi bi-emoji-smile"></i>
+                        </div>
+                        <div class="stat-number" data-count="99">0</div>
+                        <div class="stat-label">Client Satisfaction %</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar" style="width: 0%;" data-width="99%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Client <span class="gradient-text">Testimonials</span></h2>
+                <p>See what our clients have to say about our creative and technical services.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-content">"Creowa Pvt Ltd transformed our brand identity completely. Their creative vision and technical expertise exceeded our expectations."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person1/50/50.jpg" alt="Client" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Alex Thompson</h4>
+                                <p>CEO, InnovateTech</p>
                             </div>
                         </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-film"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Video Production</h3>
-                                    <p>Produce high-quality videos including commercials, documentaries, and brand stories.</p>
-                                </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-content">"The full stack development team at Creowa delivered a robust solution that scaled perfectly with our business growth."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person2/50/50.jpg" alt="Client" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sarah Martinez</h4>
+                                <p>CTO, DataFlow Systems</p>
                             </div>
                         </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-scissors"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Post-Production</h3>
-                                    <p>Professional video editing, color grading, and visual effects to enhance your content.</p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
                         </div>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="bi bi-drone"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h3>Aerial Photography</h3>
-                                    <p>Capture stunning aerial shots and drone footage for unique perspectives of your brand.</p>
-                                </div>
+                        <p class="testimonial-content">"Their photography and video production team captured our brand essence perfectly. The visual content was exceptional."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person3/50/50.jpg" alt="Client" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Marketing Director, Luxe Brands</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="service-process">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Our <span class="gradient-text">Production Process</span></h2>
-                        <p>We follow a proven methodology to deliver exceptional visual content.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Get In <span class="gradient-text">Touch</span></h2>
+                <p>Ready to transform your brand? Contact us today for a free consultation.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                            <select class="form-select">
+                                <option selected>Select a Service</option>
+                                <option value="1">Branding and Identity Development</option>
+                                <option value="2">Paid Media & Inbound Campaigns</option>
+                                <option value="3">Creative Design, Video & Experience</option>
+                                <option value="4">Web Design & Development</option>
+                                <option value="5">Full Stack Development</option>
+                                <option value="6">Photography and Video Productions</option>
+                                <option value="7">Other</option>
+                            </select>
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-gradient w-100">Send Message</button>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <h3>Pre-Production</h3>
-                                <p>We plan concepts, scout locations, and prepare all necessary equipment and talent.</p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div>
+                                <h4>Office Location</h4>
+                                <p>123 Business Ave, Suite 100<br>New York, NY 10001</p>
                             </div>
                         </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <h3>Production</h3>
-                                <p>We execute the shoot with professional equipment and experienced crew.</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div>
+                                <h4>Phone Number</h4>
+                                <p>+1 (555) 123-4567</p>
                             </div>
                         </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <h3>Post-Production</h3>
-                                <p>We edit and enhance content to deliver polished final assets.</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
+                            <div>
+                                <h4>Email Address</h4>
+                                <p>info@creowa.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock-fill"></i>
+                            </div>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="service-cta">
-                <div class="container">
-                    <div data-aos="fade-up">
-                        <h2>Ready to Capture Your Vision?</h2>
-                        <p>Contact us today for a free visual production consultation and bring your brand to life.</p>
-                        <button class="btn btn-gradient" onclick="showPage('home')">Get In Touch</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="footer-logo">Creowa Pvt Ltd</div>
+                    <p>Transforming brands with innovative design, development, and creative solutions that drive results.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="portfolio.html" target="_blank">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Branding & Identity</a></li>
+                        <li><a href="#services">Paid Media & Inbound</a></li>
+                        <li><a href="#services">Creative Design & Video</a></li>
+                        <li><a href="#services">Web Design & Development</a></li>
+                        <li><a href="#services">Full Stack Development</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Us</h5>
+                    <p>Ready to elevate your brand? Get in touch with our expert team today.</p>
+                    <a href="#contact" class="btn btn-gradient mt-2">Contact Us</a>
+                </div>
             </div>
-        </section>
-    </div>
+            <div class="copyright">
+                <p>&copy; 2023 Creowa Pvt Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">
@@ -2902,6 +2147,7 @@ footer {
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
         // Initialize AOS
         AOS.init({
@@ -2910,88 +2156,282 @@ footer {
             offset: 100
         });
 
-        // Theme Toggle - Using new theme switch
-        const themeToggle = document.getElementById('switch');
-        const mobileThemeToggle = document.getElementById('mobile-switch');
+        // Theme Toggle - Using circular menu
+        const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
         // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         body.setAttribute('data-theme', savedTheme);
         
-        // Set the checkbox state based on saved theme
-        if (savedTheme === 'light') {
-            themeToggle.checked = true;
-            mobileThemeToggle.checked = true;
+        // Update theme icon based on saved theme
+        function updateThemeIcon() {
+            const currentTheme = body.getAttribute('data-theme');
+            const themeIcon = document.querySelector('#themeToggle i');
+            
+            if (currentTheme === 'light') {
+                themeIcon.className = 'bi bi-sun-fill';
+            } else {
+                themeIcon.className = 'bi bi-moon-fill';
+            }
         }
+        
+        // Initialize theme icon
+        updateThemeIcon();
 
-        // Desktop theme toggle
-        themeToggle.addEventListener('change', () => {
-            const newTheme = themeToggle.checked ? 'light' : 'dark';
+        // Theme toggle
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Sync mobile toggle
-            mobileThemeToggle.checked = themeToggle.checked;
+            // Update theme icon
+            updateThemeIcon();
         });
 
-        // Mobile theme toggle
-        mobileThemeToggle.addEventListener('change', () => {
-            const newTheme = mobileThemeToggle.checked ? 'light' : 'dark';
+        // Draggable Circular Menu
+        const circularMenuContainer = document.getElementById('circularMenuContainer');
+        const circularMenuIcon = document.querySelector('.circular-menu__icon');
+        const positionIndicator = document.getElementById('positionIndicator');
+        const positionText = document.getElementById('positionText');
+        const resetPositionBtn = document.getElementById('resetPosition');
+        const savePositionBtn = document.getElementById('savePosition');
+        const menuTab = document.getElementById('menuTab');
+        
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        let touchHoldTimer;
+        let menuOpen = false;
+        let firstVisit = true;
+        
+        // Set initial position from localStorage or default
+        function setInitialPosition() {
+            const savedPosition = localStorage.getItem('menuPosition');
+            const menuOpened = localStorage.getItem('menuOpened');
             
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+            if (savedPosition && menuOpened) {
+                const position = JSON.parse(savedPosition);
+                xOffset = position.x;
+                yOffset = position.y;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(position.x, position.y);
+                menuTab.classList.add('hidden');
+                firstVisit = false;
+            } else {
+                // Default position: left center
+                const windowHeight = window.innerHeight;
+                xOffset = 50;
+                yOffset = windowHeight / 2;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(xOffset, yOffset);
+                menuTab.classList.remove('hidden');
+            }
+        }
+        
+        // Update position text
+        function updatePositionText(x, y) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
             
-            // Sync desktop toggle
-            themeToggle.checked = mobileThemeToggle.checked;
+            let position = '';
+            
+            if (y < windowHeight / 3) {
+                position += 'Top ';
+            } else if (y > (windowHeight * 2) / 3) {
+                position += 'Bottom ';
+            } else {
+                position += 'Middle ';
+            }
+            
+            if (x < windowWidth / 3) {
+                position += 'Left';
+            } else if (x > (windowWidth * 2) / 3) {
+                position += 'Right';
+            } else {
+                position += 'Center';
+            }
+            
+            positionText.textContent = position;
+        }
+        
+        // Set translate
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+        
+        // Open menu
+        function openMenu() {
+            menuTab.classList.add('hidden');
+            circularMenuContainer.style.opacity = '1';
+            circularMenuContainer.style.visibility = 'visible';
+            menuOpen = true;
+            localStorage.setItem('menuOpened', 'true');
+        }
+        
+        // Drag start
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+                
+                // Start touch hold timer
+                touchHoldTimer = setTimeout(() => {
+                    isDragging = true;
+                    circularMenuContainer.classList.add('dragging');
+                    positionIndicator.classList.add('show');
+                }, 500); // 500ms hold time
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+                
+                // For mouse, we don't need a hold timer, just check if right-click or shift+click
+                isDragging = true;
+                circularMenuContainer.classList.add('dragging');
+                positionIndicator.classList.add('show');
+            }
+        }
+        
+        // Drag end
+        function dragEnd(e) {
+            // Clear touch hold timer
+            clearTimeout(touchHoldTimer);
+            
+            if (isDragging) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+                circularMenuContainer.classList.remove('dragging');
+                
+                // Save position to localStorage
+                localStorage.setItem('menuPosition', JSON.stringify({
+                    x: xOffset,
+                    y: yOffset
+                }));
+            }
+        }
+        
+        // Drag
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                
+                xOffset = currentX;
+                yOffset = currentY;
+                
+                setTranslate(currentX, currentY, circularMenuContainer);
+                updatePositionText(currentX, currentY);
+            }
+        }
+        
+        // Reset position
+        function resetPosition() {
+            const windowHeight = window.innerHeight;
+            xOffset = 50;
+            yOffset = windowHeight / 2;
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
+            
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Save position button
+        function savePosition() {
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Show toast notification
+            showToast('Menu position saved successfully!', 'success');
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Add event listeners
+        circularMenuIcon.addEventListener('touchstart', dragStart, { passive: false });
+        circularMenuIcon.addEventListener('touchend', dragEnd, { passive: false });
+        circularMenuIcon.addEventListener('touchmove', drag, { passive: false });
+        
+        // For desktop, use right-click or shift+click
+        circularMenuIcon.addEventListener('mousedown', (e) => {
+            if (e.button === 2 || e.shiftKey) { // Right-click or shift+click
+                e.preventDefault();
+                dragStart(e);
+            }
         });
-
-        // Page Navigation Functions
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
+        
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('mousemove', drag);
+        
+        // Prevent context menu on right-click
+        circularMenuIcon.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+        
+        // Menu tab click
+        menuTab.addEventListener('click', () => {
+            openMenu();
+            showToast('You can touch and hold the menu button to drag it to a new position', 'info');
+        });
+        
+        // Reset and save position buttons
+        resetPositionBtn.addEventListener('click', resetPosition);
+        savePositionBtn.addEventListener('click', savePosition);
+        
+        // Set initial position on load
+        setInitialPosition();
+        
+        // Update position on window resize
+        window.addEventListener('resize', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
             
-            // Show the selected page
-            document.getElementById(pageId + '-page').classList.add('active');
+            // Ensure menu stays within viewport
+            if (xOffset < 0) xOffset = 0;
+            if (yOffset < 0) yOffset = 0;
+            if (xOffset > windowWidth - 60) xOffset = windowWidth - 60;
+            if (yOffset > windowHeight - 60) yOffset = windowHeight - 60;
             
-            // Scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
-            // Reinitialize AOS for the new content
-            AOS.refresh();
-        }
-
-        function showServicePage(serviceId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show the selected service page
-            document.getElementById(serviceId + '-service-page').classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
-            // Reinitialize AOS for the new content
-            AOS.refresh();
-        }
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
+        });
 
         // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
+                
+                // Show welcome message for first-time visitors
+                if (firstVisit) {
+                    setTimeout(() => {
+                        showToast('Welcome! Click the MENU tab on the left to open the navigation menu', 'info');
+                    }, 1500);
+                }
             }, 1000);
         });
 
@@ -3058,7 +2498,7 @@ footer {
                     } else {
                         counter.innerText = target;
                         
-                        // Animate the corresponding progress bar
+                        // Animate corresponding progress bar
                         if (progressBars[index]) {
                             const width = progressBars[index].getAttribute('data-width');
                             progressBars[index].style.width = width;
