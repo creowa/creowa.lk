@@ -6,6 +6,7 @@
     <title>Portfolio - Creowa Pvt Ltd</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
       :root {
@@ -103,7 +104,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 52px;
     margin-right: 12px;
     border-radius: 8px;
 }
@@ -176,53 +177,271 @@ body {
     color: var(--primary-color);
 }
 
-/* New Theme Toggle Button */
-.toggle {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  line-height: 1;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
+/* Circular Menu Styles */
+.circular-menu-container {
+    position: fixed;
+    z-index: 1001;
+    user-select: none;
 }
 
-.toggle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+.circular-menu {
+    font-size: 20px;
+    width: 400px;
+    height: 250px;
+    margin-left: -200px;
+    margin-top: 5rem;
+    padding-left: 200px;
+    padding-top: 20px;
+    position: relative;
 }
 
-.input {
-  display: none;
+.circular-menu__button {
+    display: none;
 }
 
-.icon {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  transition: transform 500ms;
-  line-height: 0.1;
+.circular-menu__button:checked + .circular-menu__icon {
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
 }
 
-.icon--moon {
-  transition-delay: 200ms;
-  color: #b4b4b4;
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(1) {
+    transform: translate3d(0, 0, 0) rotate(45deg);
 }
 
-.icon--sun {
-  transform: scale(0);
-  color: #ffa500;
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0) scale(0.1, 1);
 }
 
-#switch:checked + .icon--moon {
-  transform: rotate(360deg) scale(0);
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 
-#switch:checked ~ .icon--sun {
-  transition-delay: 200ms;
-  transform: scale(1) rotate(360deg);
+.circular-menu__button:checked ~ .circular-menu__item {
+    transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+    transition-duration: 0.18s;
+    transform: translate3d(0, -105px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+    transition-duration: 0.28s;
+    transform: translate3d(74.25px, -74.25px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+    transition-duration: 0.38s;
+    transform: translate3d(105px, 0, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
+    transition-duration: 0.48s;
+    transform: translate3d(74.25px, 74.25px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
+    transition-duration: 0.58s;
+    transform: translate3d(0, 105px, 0);
+}
+
+.circular-menu__icon {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transition: transform ease-out 0.4s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.circular-menu__icon:hover {
+    transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+}
+
+.hamburger-bar {
+    background: #fff;
+    display: block;
+    width: 25px;
+    height: 3px;
+    left: 50%;
+    margin-left: -12.5px;
+    margin-top: -1.5px;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.2s;
+}
+
+.hamburger-bar:nth-child(1) {
+    transform: translate3d(0, -8px, 0);
+}
+
+.hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0);
+}
+
+.hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 8px, 0);
+}
+
+.circular-menu__item {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 0.18s;
+    width: 50px;
+    font-size: 24px;
+}
+
+.circular-menu__item:hover {
+    color: var(--primary-color);
+    background: var(--bg-tertiary);
+}
+
+.circular-menu__item:active,
+.circular-menu__item:focus {
+    color: var(--accent-color);
+}
+
+/* Mobile Circular Menu */
+@media (max-width: 768px) {
+    .circular-menu {
+        width: 300px;
+        height: 200px;
+        margin-left: -150px;
+        margin-top: 5rem;
+        padding-left: 150px;
+        padding-top: 20px;
+    }
+    
+    .circular-menu__icon {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+    }
+    
+    .circular-menu__item {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+        font-size: 28px;
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+        transform: translate3d(0, -80px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+        transform: translate3d(56.57px, -56.57px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+        transform: translate3d(80px, 0, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
+        transform: translate3d(56.57px, 56.57px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
+        transform: translate3d(0, 80px, 0);
+    }
+}
+
+/* Draggable Menu Styles */
+.draggable {
+    cursor: move;
+}
+
+.dragging {
+    opacity: 0.8;
+    z-index: 1002;
+}
+
+.position-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: none;
+    z-index: 1003;
+}
+
+.position-indicator.show {
+    display: block;
+}
+
+.position-indicator button {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.position-indicator button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Tab */
+.menu-tab {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: var(--gradient);
+    color: white;
+    padding: 10px 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.menu-tab:hover {
+    padding-left: 10px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-tab.hidden {
+    left: -60px;
 }
 
 /* Hero Section - Professional Design with Circle Animation */
@@ -831,23 +1050,6 @@ footer {
     font-size: 0.75rem;
 }
 
-/* Adjust toggle for mobile */
-.mobile-nav-item .toggle {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0.25rem;
-}
-
-.mobile-nav-item .icon {
-    width: 20px;
-    height: 20px;
-}
-
-.mobile-nav-item .icon svg {
-    width: 20px;
-    height: 20px;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero-content h1 {
@@ -1039,16 +1241,74 @@ footer {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
+
+/* Notification Toast */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.custom-toast {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.custom-toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.toast-success .toast-icon {
+    color: #10b981;
+}
+
+.toast-error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-info .toast-icon {
+    color: var(--primary-color);
+}
     </style>
 </head>
 <body data-theme="dark">
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Position Indicator for Draggable Menu -->
+    <div class="position-indicator" id="positionIndicator">
+        <span>Menu Position: <span id="positionText">Left Center</span></span>
+        <button id="resetPosition">Reset</button>
+        <button id="savePosition">Save</button>
+    </div>
+
+    <!-- Menu Tab -->
+    <div class="menu-tab" id="menuTab">
+        MENU
+    </div>
+
     <!-- Redesigned Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="navbar-container">
             <!-- Company Name/Logo - Left Side -->
             <a class="navbar-brand" href="index.html">
-                <img src="https://picsum.photos/seed/creowa-logo/40/40.jpg" alt="Creowa Logo">
-                <span>Creowa Pvt Ltd</span>
+                <img src="logo.png" alt="Creowa Logo">
             </a>
             
             <!-- Navigation Buttons - Right Side -->
@@ -1091,43 +1351,6 @@ footer {
                         Contact
                     </a>
                 </div>
-                <div class="nav-item">
-                    <!-- New Theme Toggle Button -->
-                    <div class="container">
-                      <label for="switch" class="toggle">
-                        <input type="checkbox" class="input" id="switch" />
-                        <div class="icon icon--moon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="32"
-                            height="32"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </div>
-
-                        <div class="icon icon--sun">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="32"
-                            height="32"
-                          >
-                            <path
-                              d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                            ></path>
-                          </svg>
-                        </div>
-                      </label>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -1156,44 +1379,35 @@ footer {
                     <i class="bi bi-envelope-fill"></i>
                     <span>Contact</span>
                 </a>
-                <!-- Theme Toggle for Mobile -->
-                <div class="mobile-nav-item">
-                    <label for="mobile-switch" class="toggle">
-                        <input type="checkbox" class="input" id="mobile-switch" />
-                        <div class="icon icon--moon">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                                    clip-rule="evenodd"
-                                ></path>
-                            </svg>
-                        </div>
-
-                        <div class="icon icon--sun">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"
-                                ></path>
-                            </svg>
-                        </div>
-                    </label>
-                    <span>Theme</span>
-                </div>
             </div>
         </div>
+    </div>
+
+    <!-- Draggable Circular Menu -->
+    <div class="circular-menu-container" id="circularMenuContainer">
+        <nav class="circular-menu">
+            <input type="checkbox" id="circular-menu" class="circular-menu__button" href="javascript: void 0">
+            <label class="circular-menu__icon" for="circular-menu">
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+            </label>
+            <a class="circular-menu__item" href="#" id="themeToggle" title="Toggle Theme">
+                <i class="bi bi-moon-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="index.html" title="Home">
+                <i class="bi bi-house-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="index.html#services" title="Services">
+                <i class="bi bi-grid-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="portfolio.html" title="Portfolio">
+                <i class="bi bi-briefcase-fill"></i>
+            </a>
+            <a class="circular-menu__item" href="index.html#contact" title="Contact">
+                <i class="bi bi-envelope-fill"></i>
+            </a>
+        </nav>
     </div>
 
     <!-- Hero Section - Professional Design with Circle Animation -->
@@ -1509,41 +1723,269 @@ footer {
             offset: 100
         });
 
-        // Theme Toggle - Using new theme switch
-        const themeToggle = document.getElementById('switch');
-        const mobileThemeToggle = document.getElementById('mobile-switch');
+        // Theme Toggle - Using circular menu
+        const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
         // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         body.setAttribute('data-theme', savedTheme);
         
-        // Set the checkbox state based on saved theme
-        if (savedTheme === 'light') {
-            themeToggle.checked = true;
-            mobileThemeToggle.checked = true;
+        // Update theme icon based on saved theme
+        function updateThemeIcon() {
+            const currentTheme = body.getAttribute('data-theme');
+            const themeIcon = document.querySelector('#themeToggle i');
+            
+            if (currentTheme === 'light') {
+                themeIcon.className = 'bi bi-sun-fill';
+            } else {
+                themeIcon.className = 'bi bi-moon-fill';
+            }
         }
+        
+        // Initialize theme icon
+        updateThemeIcon();
 
-        // Desktop theme toggle
-        themeToggle.addEventListener('change', () => {
-            const newTheme = themeToggle.checked ? 'light' : 'dark';
+        // Theme toggle
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Sync mobile toggle
-            mobileThemeToggle.checked = themeToggle.checked;
+            // Update theme icon
+            updateThemeIcon();
         });
 
-        // Mobile theme toggle
-        mobileThemeToggle.addEventListener('change', () => {
-            const newTheme = mobileThemeToggle.checked ? 'light' : 'dark';
+        // Draggable Circular Menu
+        const circularMenuContainer = document.getElementById('circularMenuContainer');
+        const circularMenuIcon = document.querySelector('.circular-menu__icon');
+        const positionIndicator = document.getElementById('positionIndicator');
+        const positionText = document.getElementById('positionText');
+        const resetPositionBtn = document.getElementById('resetPosition');
+        const savePositionBtn = document.getElementById('savePosition');
+        const menuTab = document.getElementById('menuTab');
+        
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        let touchHoldTimer;
+        let menuOpen = false;
+        let firstVisit = true;
+        
+        // Set initial position from localStorage or default
+        function setInitialPosition() {
+            const savedPosition = localStorage.getItem('menuPosition');
+            const menuOpened = localStorage.getItem('menuOpened');
             
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+            if (savedPosition && menuOpened) {
+                const position = JSON.parse(savedPosition);
+                xOffset = position.x;
+                yOffset = position.y;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(position.x, position.y);
+                menuTab.classList.add('hidden');
+                firstVisit = false;
+            } else {
+                // Default position: left center
+                const windowHeight = window.innerHeight;
+                xOffset = 50;
+                yOffset = windowHeight / 2;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(xOffset, yOffset);
+                menuTab.classList.remove('hidden');
+            }
+        }
+        
+        // Update position text
+        function updatePositionText(x, y) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
             
-            // Sync desktop toggle
-            themeToggle.checked = mobileThemeToggle.checked;
+            let position = '';
+            
+            if (y < windowHeight / 3) {
+                position += 'Top ';
+            } else if (y > (windowHeight * 2) / 3) {
+                position += 'Bottom ';
+            } else {
+                position += 'Middle ';
+            }
+            
+            if (x < windowWidth / 3) {
+                position += 'Left';
+            } else if (x > (windowWidth * 2) / 3) {
+                position += 'Right';
+            } else {
+                position += 'Center';
+            }
+            
+            positionText.textContent = position;
+        }
+        
+        // Set translate
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+        
+        // Open menu
+        function openMenu() {
+            menuTab.classList.add('hidden');
+            circularMenuContainer.style.opacity = '1';
+            circularMenuContainer.style.visibility = 'visible';
+            menuOpen = true;
+            localStorage.setItem('menuOpened', 'true');
+        }
+        
+        // Drag start
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+                
+                // Start touch hold timer
+                touchHoldTimer = setTimeout(() => {
+                    isDragging = true;
+                    circularMenuContainer.classList.add('dragging');
+                    positionIndicator.classList.add('show');
+                }, 500); // 500ms hold time
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+                
+                // For mouse, we don't need a hold timer, just check if right-click or shift+click
+                isDragging = true;
+                circularMenuContainer.classList.add('dragging');
+                positionIndicator.classList.add('show');
+            }
+        }
+        
+        // Drag end
+        function dragEnd(e) {
+            // Clear touch hold timer
+            clearTimeout(touchHoldTimer);
+            
+            if (isDragging) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+                circularMenuContainer.classList.remove('dragging');
+                
+                // Save position to localStorage
+                localStorage.setItem('menuPosition', JSON.stringify({
+                    x: xOffset,
+                    y: yOffset
+                }));
+            }
+        }
+        
+        // Drag
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                
+                xOffset = currentX;
+                yOffset = currentY;
+                
+                setTranslate(currentX, currentY, circularMenuContainer);
+                updatePositionText(currentX, currentY);
+            }
+        }
+        
+        // Reset position
+        function resetPosition() {
+            const windowHeight = window.innerHeight;
+            xOffset = 50;
+            yOffset = windowHeight / 2;
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
+            
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Save position button
+        function savePosition() {
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Show toast notification
+            showToast('Menu position saved successfully!', 'success');
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Add event listeners
+        circularMenuIcon.addEventListener('touchstart', dragStart, { passive: false });
+        circularMenuIcon.addEventListener('touchend', dragEnd, { passive: false });
+        circularMenuIcon.addEventListener('touchmove', drag, { passive: false });
+        
+        // For desktop, use right-click or shift+click
+        circularMenuIcon.addEventListener('mousedown', (e) => {
+            if (e.button === 2 || e.shiftKey) { // Right-click or shift+click
+                e.preventDefault();
+                dragStart(e);
+            }
+        });
+        
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('mousemove', drag);
+        
+        // Prevent context menu on right-click
+        circularMenuIcon.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+        
+        // Menu tab click
+        menuTab.addEventListener('click', () => {
+            openMenu();
+            showToast('You can touch and hold the menu button to drag it to a new position', 'info');
+        });
+        
+        // Reset and save position buttons
+        resetPositionBtn.addEventListener('click', resetPosition);
+        savePositionBtn.addEventListener('click', savePosition);
+        
+        // Set initial position on load
+        setInitialPosition();
+        
+        // Update position on window resize
+        window.addEventListener('resize', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Ensure menu stays within viewport
+            if (xOffset < 0) xOffset = 0;
+            if (yOffset < 0) yOffset = 0;
+            if (xOffset > windowWidth - 60) xOffset = windowWidth - 60;
+            if (yOffset > windowHeight - 60) yOffset = windowHeight - 60;
+            
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
         });
 
         // Portfolio Filtering
@@ -1742,6 +2184,52 @@ footer {
                 modal.show();
             }
         }
+
+        // Toast Notification Function
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `custom-toast toast-${type}`;
+            
+            let icon = '';
+            switch(type) {
+                case 'success':
+                    icon = '<i class="bi bi-check-circle-fill toast-icon"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="bi bi-x-circle-fill toast-icon"></i>';
+                    break;
+                default:
+                    icon = '<i class="bi bi-info-circle-fill toast-icon"></i>';
+            }
+            
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            
+            toastContainer.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Show welcome message for first-time visitors
+        window.addEventListener('load', () => {
+            if (firstVisit) {
+                setTimeout(() => {
+                    showToast('Welcome! Click the MENU tab on the left to open the navigation menu', 'info');
+                }, 1500);
+            }
+        });
     </script>
 </body>
 </html>
