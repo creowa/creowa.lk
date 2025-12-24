@@ -221,6 +221,7 @@ body {
     transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
 }
 
+/* Adjusted for 3 items */
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
     transition-duration: 0.18s;
     transform: translate3d(0, -105px, 0);
@@ -228,23 +229,14 @@ body {
 
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
     transition-duration: 0.28s;
-    transform: translate3d(74.25px, -74.25px, 0);
+    transform: translate3d(91px, -52px, 0);
 }
 
 .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
     transition-duration: 0.38s;
-    transform: translate3d(105px, 0, 0);
+    transform: translate3d(91px, 52px, 0);
 }
 
-.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
-    transition-duration: 0.48s;
-    transform: translate3d(74.25px, 74.25px, 0);
-}
-
-.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
-    transition-duration: 0.58s;
-    transform: translate3d(0, 105px, 0);
-}
 
 .circular-menu__icon {
     background: var(--gradient);
@@ -347,24 +339,17 @@ body {
         font-size: 28px;
     }
     
+    /* Adjusted for 3 items on mobile */
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
         transform: translate3d(0, -80px, 0);
     }
     
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
-        transform: translate3d(56.57px, -56.57px, 0);
+        transform: translate3d(69px, -40px, 0);
     }
     
     .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
-        transform: translate3d(80px, 0, 0);
-    }
-    
-    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(4) {
-        transform: translate3d(56.57px, 56.57px, 0);
-    }
-    
-    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
-        transform: translate3d(0, 80px, 0);
+        transform: translate3d(69px, 40px, 0);
     }
 }
 
@@ -1383,7 +1368,7 @@ footer {
         </div>
     </div>
 
-    <!-- Draggable Circular Menu -->
+    <!-- UPDATED Draggable Circular Menu -->
     <div class="circular-menu-container" id="circularMenuContainer">
         <nav class="circular-menu">
             <input type="checkbox" id="circular-menu" class="circular-menu__button" href="javascript: void 0">
@@ -1392,20 +1377,22 @@ footer {
                 <div class="hamburger hamburger-bar"></div>
                 <div class="hamburger hamburger-bar"></div>
             </label>
+            
+            <!-- Item 1: Theme Toggle -->
             <a class="circular-menu__item" href="#" id="themeToggle" title="Toggle Theme">
                 <i class="bi bi-moon-fill"></i>
             </a>
-            <a class="circular-menu__item" href="index.html" title="Home">
-                <i class="bi bi-house-fill"></i>
+            
+            <!-- Item 2: Hotline Call -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL PHONE NUMBER !!! -->
+            <a class="circular-menu__item" href="tel:+15551234567" title="Call Hotline" id="hotlineButton">
+                <i class="bi bi-telephone-fill"></i>
             </a>
-            <a class="circular-menu__item" href="index.html#services" title="Services">
-                <i class="bi bi-grid-fill"></i>
-            </a>
-            <a class="circular-menu__item" href="portfolio.html" title="Portfolio">
-                <i class="bi bi-briefcase-fill"></i>
-            </a>
-            <a class="circular-menu__item" href="index.html#contact" title="Contact">
-                <i class="bi bi-envelope-fill"></i>
+            
+            <!-- Item 3: WhatsApp -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL WHATSAPP NUMBER !!! -->
+            <a class="circular-menu__item" href="https://wa.me/15551234567?text=Hello%20Creowa,%20I'm%20interested%20in%20your%20services." target="_blank" title="Chat on WhatsApp" id="whatsappButton">
+                <i class="bi bi-whatsapp"></i>
             </a>
         </nav>
     </div>
@@ -1963,7 +1950,7 @@ footer {
         // Menu tab click
         menuTab.addEventListener('click', () => {
             openMenu();
-            showToast('You can touch and hold the menu button to drag it to a new position', 'info');
+            showToast('You can touch and hold menu button to drag it to a new position', 'info');
         });
         
         // Reset and save position buttons
@@ -2226,7 +2213,7 @@ footer {
         window.addEventListener('load', () => {
             if (firstVisit) {
                 setTimeout(() => {
-                    showToast('Welcome! Click the MENU tab on the left to open the navigation menu', 'info');
+                    showToast('Welcome! Click MENU tab on the left to open the navigation menu', 'info');
                 }, 1500);
             }
         });
