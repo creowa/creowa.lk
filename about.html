@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Creowa Pvt Ltd</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+      :root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --dark-bg: #0f172a;
+    --dark-secondary: #1e293b;
+    --dark-tertiary: #334155;
+    --light-bg: #ffffff;
+    --light-secondary: #f8fafc;
+    --light-tertiary: #f1f5f9;
+    --text-dark: #1e293b;
+    --text-light: #e2e8f0;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg);
+    --bg-secondary: var(--dark-secondary);
+    --bg-tertiary: var(--dark-tertiary);
+    --text-color: var(--text-light);
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg);
+    --bg-secondary: var(--light-secondary);
+    --bg-tertiary: var(--light-tertiary);
+    --text-color: var(--text-dark);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+/* Redesigned Navigation */
+.navbar {
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    transition: var(--transition);
+    padding: 0.8rem 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    height: 52px;
+    margin-right: 12px;
+    border-radius: 8px;
+}
+
+.navbar-brand span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color) !important;
+}
+
+.nav-link i {
+    margin-right: 0.3rem;
+    font-size: 1rem;
+}
+
+.dropdown-menu {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    color: var(--text-color);
+    transition: var(--transition);
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.dropdown-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+}
+
+/* Circular Menu Styles */
+.circular-menu-container {
+    position: fixed;
+    z-index: 1001;
+    user-select: none;
+}
+
+.circular-menu {
+    font-size: 20px;
+    width: 400px;
+    height: 250px;
+    margin-left: -200px;
+    margin-top: 5rem;
+    padding-left: 200px;
+    padding-top: 20px;
+    position: relative;
+}
+
+.circular-menu__button {
+    display: none;
+}
+
+.circular-menu__button:checked + .circular-menu__icon {
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(1) {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+}
+
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0) scale(0.1, 1);
+}
+
+.circular-menu__button:checked + .circular-menu__icon > .hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item {
+    transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
+}
+
+/* Adjusted for 3 items */
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+    transition-duration: 0.18s;
+    transform: translate3d(0, -105px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+    transition-duration: 0.28s;
+    transform: translate3d(91px, -52px, 0);
+}
+
+.circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+    transition-duration: 0.38s;
+    transform: translate3d(91px, 52px, 0);
+}
+
+
+.circular-menu__icon {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    transition: transform ease-out 0.4s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.circular-menu__icon:hover {
+    transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+}
+
+.hamburger-bar {
+    background: #fff;
+    display: block;
+    width: 25px;
+    height: 3px;
+    left: 50%;
+    margin-left: -12.5px;
+    margin-top: -1.5px;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.2s;
+}
+
+.hamburger-bar:nth-child(1) {
+    transform: translate3d(0, -8px, 0);
+}
+
+.hamburger-bar:nth-child(2) {
+    transform: translate3d(0, 0, 0);
+}
+
+.hamburger-bar:nth-child(3) {
+    transform: translate3d(0, 8px, 0);
+}
+
+.circular-menu__item {
+    background: var(--gradient);
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 0.18s;
+    width: 50px;
+    font-size: 24px;
+}
+
+.circular-menu__item:hover {
+    color: var(--primary-color);
+    background: var(--bg-tertiary);
+}
+
+.circular-menu__item:active,
+.circular-menu__item:focus {
+    color: var(--accent-color);
+}
+
+/* Mobile Circular Menu */
+@media (max-width: 768px) {
+    .circular-menu {
+        width: 300px;
+        height: 200px;
+        margin-left: -150px;
+        margin-top: 5rem;
+        padding-left: 150px;
+        padding-top: 20px;
+    }
+    
+    .circular-menu__icon {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+    }
+    
+    .circular-menu__item {
+        height: 60px;
+        width: 60px;
+        margin-left: -30px;
+        line-height: 60px;
+        font-size: 28px;
+    }
+    
+    /* Adjusted for 3 items on mobile */
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(1) {
+        transform: translate3d(0, -80px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(2) {
+        transform: translate3d(69px, -40px, 0);
+    }
+    
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(3) {
+        transform: translate3d(69px, 40px, 0);
+    }
+}
+
+/* Draggable Menu Styles */
+.draggable {
+    cursor: move;
+}
+
+.dragging {
+    opacity: 0.8;
+    z-index: 1002;
+}
+
+.position-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: none;
+    z-index: 1003;
+}
+
+.position-indicator.show {
+    display: block;
+}
+
+.position-indicator button {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.position-indicator button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Tab */
+.menu-tab {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: var(--gradient);
+    color: white;
+    padding: 10px 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.menu-tab:hover {
+    padding-left: 10px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-tab.hidden {
+    left: -60px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0 5rem;
+    text-align: center;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* About Section */
+.about-section {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.about-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    background: var(--gradient);
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-card p {
+    opacity: 0.8;
+}
+
+/* Team Section */
+.team {
+    padding: 5rem 0;
+    background: var(--bg-color);
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 5px solid var(--card-bg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.team-member:hover img {
+    transform: scale(1.05);
+}
+
+.team-member h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+
+.team-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.team-socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.team-socials a:hover {
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Journey Section */
+.journey {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.journey::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--gradient);
+}
+
+.journey-item {
+    position: relative;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.journey-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.journey-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--gradient);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.journey-item:nth-child(odd)::before {
+    left: -60px;
+}
+
+.journey-item:nth-child(even)::before {
+    right: -60px;
+}
+
+.journey-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.journey-item span {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-secondary);
+    padding: 3rem 0 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    transform: translateX(5px);
+    display: inline-block;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    opacity: 0.7;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    z-index: 1000;
+    border-top: 1px solid var(--border-color);
+}
+
+.mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    padding: 0.5rem;
+    border-radius: 10px;
+    min-width: 60px;
+}
+
+.mobile-nav-item.active {
+    color: var(--primary-color);
+}
+
+.mobile-nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.mobile-nav-item span {
+    font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    .hero {
+        padding-top: 7rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .journey::before {
+        left: 30px;
+    }
+
+    .journey-item::before {
+        left: 20px !important;
+        right: auto !important;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Notification Toast */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.custom-toast {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.custom-toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.toast-success .toast-icon {
+    color: #10b981;
+}
+
+.toast-error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-info .toast-icon {
+    color: var(--primary-color);
+}
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Position Indicator for Draggable Menu -->
+    <div class="position-indicator" id="positionIndicator">
+        <span>Menu Position: <span id="positionText">Left Center</span></span>
+        <button id="resetPosition">Reset</button>
+        <button id="savePosition">Save</button>
+    </div>
+
+    <!-- Menu Tab -->
+    <div class="menu-tab" id="menuTab">
+        MENU
+    </div>
+
+    <!-- Redesigned Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="navbar-container">
+            <!-- Company Name/Logo - Left Side -->
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Creowa Logo">
+            </a>
+            
+            <!-- Navigation Buttons - Right Side -->
+            <div class="navbar-nav">
+                <div class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="bi bi-house-door"></i>
+                        Home
+                    </a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-grid-3x3-gap"></i>
+                        Services
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-palette"></i> Branding and Identity</a></li>
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-bullseye"></i> Paid Media & Inbound</a></li>
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-brush"></i> Creative Design & Video</a></li>
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-laptop"></i> Web Design & Development</a></li>
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-code-slash"></i> Full Stack Development</a></li>
+                        <li><a class="dropdown-item" href="index.html#services"><i class="bi bi-camera"></i> Photography & Video</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="portfolio.html">
+                        <i class="bi bi-briefcase"></i>
+                        Portfolio
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        <i class="bi bi-person"></i>
+                        About
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="index.html#contact">
+                        <i class="bi bi-envelope"></i>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="container">
+            <div class="mobile-nav-items">
+                <a href="index.html" class="mobile-nav-item">
+                    <i class="bi bi-house-fill"></i>
+                    <span>Home</span>
+                </a>
+                <a href="index.html#services" class="mobile-nav-item">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Services</span>
+                </a>
+                <a href="portfolio.html" class="mobile-nav-item">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="about.html" class="mobile-nav-item active">
+                    <i class="bi bi-person-fill"></i>
+                    <span>About</span>
+                </a>
+                <a href="index.html#contact" class="mobile-nav-item">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPDATED Draggable Circular Menu -->
+    <div class="circular-menu-container" id="circularMenuContainer">
+        <nav class="circular-menu">
+            <input type="checkbox" id="circular-menu" class="circular-menu__button" href="javascript: void 0">
+            <label class="circular-menu__icon" for="circular-menu">
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+                <div class="hamburger hamburger-bar"></div>
+            </label>
+            
+            <!-- Item 1: Theme Toggle -->
+            <a class="circular-menu__item" href="#" id="themeToggle" title="Toggle Theme">
+                <i class="bi bi-moon-fill"></i>
+            </a>
+            
+            <!-- Item 2: Hotline Call -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL PHONE NUMBER !!! -->
+            <a class="circular-menu__item" href="tel:+15551234567" title="Call Hotline" id="hotlineButton">
+                <i class="bi bi-telephone-fill"></i>
+            </a>
+            
+            <!-- Item 3: WhatsApp -->
+            <!-- !!! IMPORTANT: REPLACE +15551234567 WITH YOUR ACTUAL WHATSAPP NUMBER !!! -->
+            <a class="circular-menu__item" href="https://wa.me/15551234567?text=Hello%20Creowa,%20I'm%20interested%20in%20your%20services." target="_blank" title="Chat on WhatsApp" id="whatsappButton">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <!-- MODERN HERO TITLE -->
+                <h1>We Build <span class="gradient-text">Brands That Inspire.</span></h1>
+                <p>We are a team of passionate creatives and developers dedicated to transforming ideas into digital realities. Learn more about our journey, our values, and the people behind the magic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-section" id="story">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <!-- MODERN SECTION TITLE -->
+                <h2>The <span class="gradient-text">Creowa</span> Difference</h2>
+                <p>From a small idea to a full-fledged digital agency.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-card">
+                        <p>Creowa Pvt Ltd was founded in 2003 with a simple mission: to help businesses thrive in the digital world. What started as a small team of designers and developers has grown into a comprehensive digital agency offering a wide range of services, from branding and identity development to full-stack web development and creative video production.</p>
+                        <p>Over the years, we've had the privilege of working with startups, small businesses, and large corporations, helping them achieve their goals and make a lasting impact. Our journey has been marked by innovation, creativity, and a relentless pursuit of excellence.</p>
+                        <p>Today, we are proud to be a trusted partner for businesses looking to elevate their brand and create exceptional digital experiences. Our story is still being written, and we invite you to be a part of it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="about-section" id="mission-vision">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <!-- MODERN SECTION TITLE -->
+                <h2>What We <span class="gradient-text">Stand For</span></h2>
+                <p>What drives us every day.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To empower businesses with innovative and creative digital solutions that drive growth, enhance brand identity, and deliver exceptional user experiences. We are committed to understanding our clients' unique needs and delivering results that exceed their expectations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be a global leader in the digital agency space, recognized for our creativity, technical expertise, and unwavering commitment to client success. We strive to push the boundaries of what's possible and set new standards for digital excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="about-section" id="values">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <!-- MODERN SECTION TITLE -->
+                <h2>The <span class="gradient-text">Creowa</span> DNA</h2>
+                <p>The core principles that guide our work.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>We embrace new ideas and technologies to create cutting-edge solutions that give our clients a competitive edge.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        <h3>Passion</h3>
+                        <p>We are passionate about our work and are dedicated to delivering exceptional results that we can be proud of.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>We believe in the power of teamwork and work closely with our clients to achieve shared goals.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Integrity</h3>
+                        <p>We conduct our business with honesty and transparency, building trust with our clients and partners.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h3>Excellence</h3>
+                        <p>We strive for excellence in everything we do, from the smallest detail to the big picture.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h3>Growth</h3>
+                        <p>We are committed to continuous learning and improvement, both as individuals and as a company.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <!-- MODERN SECTION TITLE -->
+                <h2>Meet Your <span class="gradient-text">Creative Crew</span></h2>
+                <p>The talented individuals behind Creowa's success.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/team1/200/200.jpg" alt="Team Member">
+                        <h4>Alex Thompson</h4>
+                        <p>CEO & Founder</p>
+                        <div class="team-socials">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/team2/200/200.jpg" alt="Team Member">
+                        <h4>Sarah Martinez</h4>
+                        <p>Head of Design</p>
+                        <div class="team-socials">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/team3/200/200.jpg" alt="Team Member">
+                        <h4>Michael Chen</h4>
+                        <p>Lead Developer</p>
+                        <div class="team-socials">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/team4/200/200.jpg" alt="Team Member">
+                        <h4>Emily Davis</h4>
+                        <p>Marketing Manager</p>
+                        <div class="team-socials">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section class="journey" id="journey">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <!-- MODERN SECTION TITLE -->
+                <h2>Two Decades of <span class="gradient-text">Digital Impact</span></h2>
+                <p>Milestones that mark our path of growth.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="journey-item">
+                        <span>2003</span>
+                        <h4>Creowa is Founded</h4>
+                        <p>Started as a small design studio with a big dream to make a difference in the digital world.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="journey-item">
+                        <span>2008</span>
+                        <h4>Expanded Services</h4>
+                        <p>Grew our team and expanded our services to include web development and digital marketing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="journey-item">
+                        <span>2015</span>
+                        <h4>Opened New Office</h4>
+                        <p>Opened a new office to accommodate our growing team and expanding client base.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="journey-item">
+                        <span>2020</span>
+                        <h4>Recognized for Excellence</h4>
+                        <p>Awarded 'Digital Agency of the Year' for our innovative work and client success stories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="footer-logo">Creowa Pvt Ltd</div>
+                    <p>Transforming brands with innovative design, development, and creative solutions that drive results.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Branding & Identity</a></li>
+                        <li><a href="index.html#services">Paid Media & Inbound</a></li>
+                        <li><a href="index.html#services">Creative Design & Video</a></li>
+                        <li><a href="index.html#services">Web Design & Development</a></li>
+                        <li><a href="index.html#services">Full Stack Development</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Us</h5>
+                    <p>Ready to elevate your brand? Get in touch with our expert team today.</p>
+                    <a href="index.html#contact" class="btn btn-gradient mt-2">Contact Us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Creowa Pvt Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Theme Toggle - Using circular menu
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        
+        // Update theme icon based on saved theme
+        function updateThemeIcon() {
+            const currentTheme = body.getAttribute('data-theme');
+            const themeIcon = document.querySelector('#themeToggle i');
+            
+            if (currentTheme === 'light') {
+                themeIcon.className = 'bi bi-sun-fill';
+            } else {
+                themeIcon.className = 'bi bi-moon-fill';
+            }
+        }
+        
+        // Initialize theme icon
+        updateThemeIcon();
+
+        // Theme toggle
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update theme icon
+            updateThemeIcon();
+        });
+
+        // Draggable Circular Menu
+        const circularMenuContainer = document.getElementById('circularMenuContainer');
+        const circularMenuIcon = document.querySelector('.circular-menu__icon');
+        const positionIndicator = document.getElementById('positionIndicator');
+        const positionText = document.getElementById('positionText');
+        const resetPositionBtn = document.getElementById('resetPosition');
+        const savePositionBtn = document.getElementById('savePosition');
+        const menuTab = document.getElementById('menuTab');
+        
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        let touchHoldTimer;
+        let menuOpen = false;
+        let firstVisit = true;
+        
+        // Set initial position from localStorage or default
+        function setInitialPosition() {
+            const savedPosition = localStorage.getItem('menuPosition');
+            const menuOpened = localStorage.getItem('menuOpened');
+            
+            if (savedPosition && menuOpened) {
+                const position = JSON.parse(savedPosition);
+                xOffset = position.x;
+                yOffset = position.y;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(position.x, position.y);
+                menuTab.classList.add('hidden');
+                firstVisit = false;
+            } else {
+                // Default position: left center
+                const windowHeight = window.innerHeight;
+                xOffset = 50;
+                yOffset = windowHeight / 2;
+                setTranslate(xOffset, yOffset, circularMenuContainer);
+                updatePositionText(xOffset, yOffset);
+                menuTab.classList.remove('hidden');
+            }
+        }
+        
+        // Update position text
+        function updatePositionText(x, y) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            let position = '';
+            
+            if (y < windowHeight / 3) {
+                position += 'Top ';
+            } else if (y > (windowHeight * 2) / 3) {
+                position += 'Bottom ';
+            } else {
+                position += 'Middle ';
+            }
+            
+            if (x < windowWidth / 3) {
+                position += 'Left';
+            } else if (x > (windowWidth * 2) / 3) {
+                position += 'Right';
+            } else {
+                position += 'Center';
+            }
+            
+            positionText.textContent = position;
+        }
+        
+        // Set translate
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+        
+        // Open menu
+        function openMenu() {
+            menuTab.classList.add('hidden');
+            circularMenuContainer.style.opacity = '1';
+            circularMenuContainer.style.visibility = 'visible';
+            menuOpen = true;
+            localStorage.setItem('menuOpened', 'true');
+        }
+        
+        // Drag start
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+                
+                // Start touch hold timer
+                touchHoldTimer = setTimeout(() => {
+                    isDragging = true;
+                    circularMenuContainer.classList.add('dragging');
+                    positionIndicator.classList.add('show');
+                }, 500); // 500ms hold time
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+                
+                // For mouse, we don't need a hold timer, just check if right-click or shift+click
+                isDragging = true;
+                circularMenuContainer.classList.add('dragging');
+                positionIndicator.classList.add('show');
+            }
+        }
+        
+        // Drag end
+        function dragEnd(e) {
+            // Clear touch hold timer
+            clearTimeout(touchHoldTimer);
+            
+            if (isDragging) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+                circularMenuContainer.classList.remove('dragging');
+                
+                // Save position to localStorage
+                localStorage.setItem('menuPosition', JSON.stringify({
+                    x: xOffset,
+                    y: yOffset
+                }));
+            }
+        }
+        
+        // Drag
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                
+                xOffset = currentX;
+                yOffset = currentY;
+                
+                setTranslate(currentX, currentY, circularMenuContainer);
+                updatePositionText(currentX, currentY);
+            }
+        }
+        
+        // Reset position
+        function resetPosition() {
+            const windowHeight = window.innerHeight;
+            xOffset = 50;
+            yOffset = windowHeight / 2;
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
+            
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Save position button
+        function savePosition() {
+            // Save to localStorage
+            localStorage.setItem('menuPosition', JSON.stringify({
+                x: xOffset,
+                y: yOffset
+            }));
+            
+            // Show toast notification
+            showToast('Menu position saved successfully!', 'success');
+            
+            // Hide position indicator
+            positionIndicator.classList.remove('show');
+        }
+        
+        // Add event listeners
+        circularMenuIcon.addEventListener('touchstart', dragStart, { passive: false });
+        circularMenuIcon.addEventListener('touchend', dragEnd, { passive: false });
+        circularMenuIcon.addEventListener('touchmove', drag, { passive: false });
+        
+        // For desktop, use right-click or shift+click
+        circularMenuIcon.addEventListener('mousedown', (e) => {
+            if (e.button === 2 || e.shiftKey) { // Right-click or shift+click
+                e.preventDefault();
+                dragStart(e);
+            }
+        });
+        
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('mousemove', drag);
+        
+        // Prevent context menu on right-click
+        circularMenuIcon.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+        
+        // Menu tab click
+        menuTab.addEventListener('click', () => {
+            openMenu();
+            showToast('You can touch and hold menu button to drag it to a new position', 'info');
+        });
+        
+        // Reset and save position buttons
+        resetPositionBtn.addEventListener('click', resetPosition);
+        savePositionBtn.addEventListener('click', savePosition);
+        
+        // Set initial position on load
+        setInitialPosition();
+        
+        // Update position on window resize
+        window.addEventListener('resize', () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Ensure menu stays within viewport
+            if (xOffset < 0) xOffset = 0;
+            if (yOffset < 0) yOffset = 0;
+            if (xOffset > windowWidth - 60) xOffset = windowWidth - 60;
+            if (yOffset > windowHeight - 60) yOffset = windowHeight - 60;
+            
+            setTranslate(xOffset, yOffset, circularMenuContainer);
+            updatePositionText(xOffset, yOffset);
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Toast Notification Function
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `custom-toast toast-${type}`;
+            
+            let icon = '';
+            switch(type) {
+                case 'success':
+                    icon = '<i class="bi bi-check-circle-fill toast-icon"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="bi bi-x-circle-fill toast-icon"></i>';
+                    break;
+                default:
+                    icon = '<i class="bi bi-info-circle-fill toast-icon"></i>';
+            }
+            
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            
+            toastContainer.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Show welcome message for first-time visitors
+        window.addEventListener('load', () => {
+            if (firstVisit) {
+                setTimeout(() => {
+                    showToast('Welcome! Click MENU tab on the left to open the navigation menu', 'info');
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
